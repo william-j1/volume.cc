@@ -7358,7 +7358,7 @@ function add_object_check(label) {
     }
 
     /* check for prohibited characters */
-    let prohibited = [g_DELIMITOR_PRIORITY_0, g_DELIMITOR_PRIORITY_3, g_DELIMITOR_PRIORITY_2, g_DELIMITOR_PRIORITY_1, '"', ']', '[', '\'', '@'];
+    let prohibited = [g_DELIMITOR_PRIORITY_0, g_DELIMITOR_PRIORITY_1, g_DELIMITOR_PRIORITY_2, g_DELIMITOR_PRIORITY_3, g_DELIMITOR_PRIORITY_5, '"', ']', '[', '\''];
     for (let n = 0; n < prohibited.length; n++ ) {
         if ( label.toString().includes(prohibited[n]) ) {
             display_label_invalid();
