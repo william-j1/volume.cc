@@ -8774,9 +8774,9 @@ function query_service_status() {
 
 /* initialisation function */
 function init()
-{
-    document.onkeydown = function() {
-        let e = e || window.event; /* deprecated... */
+{   
+    document.onkeydown = function(event) {
+        var e = event || window.event;
         if (e.altKey) {
             if (e.which == 78)
                 new_list();
@@ -9118,7 +9118,7 @@ function _export(type)
 	download_link.click();
 }
 
-/* set image prefix bnased onn locale */
+/* set image prefix based onn locale */
 function set_image_prefix()
 {
     g_image_prefix = "";
