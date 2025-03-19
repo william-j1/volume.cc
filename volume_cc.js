@@ -6075,9 +6075,11 @@ function new_list() {
     g_nslPrompt.show(true);
 }
 
-function add_list(descriptor) {
-    TabNavigation.add(descriptor);
-    g_volume_lists.set(descriptor, new VolumeList());
+function add_list(tab_title) {
+    if ( !add_object_check(tab_title) )
+        return;
+    TabNavigation.add(tab_title);
+    g_volume_lists.set(tab_title, new VolumeList());
     display_volume_list();
 }
 
@@ -7349,7 +7351,7 @@ function update_trapezoidal_prism()
     update_display();
 }
 
-/* signals whether the label is acceptable */
+/* signals whether the text input is acceptable */
 function add_object_check(label) {
 
     if (label == "") {
