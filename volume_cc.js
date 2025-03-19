@@ -9120,7 +9120,7 @@ function _export(type)
 	download_link.click();
 }
 
-/* set image prefix based onn locale */
+/* set image prefix based on regional locale */
 function set_image_prefix()
 {
     g_image_prefix = "";
