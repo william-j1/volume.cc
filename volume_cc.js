@@ -8887,26 +8887,52 @@ function init()
 
 /* print the volume list */
 function print_volume_list() {
+
     if ( has_service_expired() )
         return;
-    if (g_volume_lists.get(TabNavigation.get_active_tab()).count() == 0)
+
+    /* n volumetric objects */
+    if ( g_volume_lists.get(TabNavigation.get_active_tab()).count() == 0 )
         return;
-    let roundingString = VolumeCCApp.rounding();
-    let resolutionString = VolumeCCApp.resolution();
-    let resolution = VolumeCCApp.cubic_resolution_to_str(resolutionString);
-    let printContents = document.getElementById('body').innerHTML;
-    let originalContents = document.body.innerHTML;
-    let volumeSummation = document.getElementById('volumeFigure').innerHTML;
-    printContents = printContents.replaceAll('<th>', '<th><span style="color:#000000;"><strong>');
-    printContents = printContents.replaceAll('</th>', '</strong></span></th>');
-    printContents = printContents.replaceAll('<td>', '<td style=\"color:#000000;\">');
-    printContents = printContents.replaceAll('<br><br><br><br><br>', '<br>');
-    printContents = '<div style="color:#000000;"><strong>' + TabNavigation.get_text(TabNavigation.get_active_index()) + "</strong><br />" + printContents + g_language_data[g_lang]["WORD_VOLUME"] + ": " + volumeSummation + " " + resolution + "</div>";
-    document.body.innerHTML = printContents;
+
+    /* record rounding string */
+    const rounding_string = VolumeCCApp.rounding();
+
+    /* record the resolution string */
+    const resolution_string = VolumeCCApp.resolution();
+
+    /* record the resolution */
+    const resolution = VolumeCCApp.cubic_resolution_to_str(resolution_string);
+
+    /* the existing data state */
+    const data_contents = document.body.innerHTML;
+
+    /* the summed volumetric */
+    const volume_sigma = document.getElementById('volumeFigure').innerHTML;
+
+    /* sent to the print queue */
+    let printable_contents = document.getElementById('body').innerHTML;
+    printable_contents = printable_contents.replaceAll('<th>', '<th><span style="color:#000000;"><strong>');
+    printable_contents = printable_contents.replaceAll('</th>', '</strong></span></th>');
+    printable_contents = printable_contents.replaceAll('<td>', '<td style=\"color:#000000;\">');
+    printable_contents = printable_contents.replaceAll('<br><br><br><br><br>', '<br>');
+    printable_contents = '<div style="color:#000000;"><strong>' + TabNavigation.get_text(TabNavigation.get_active_index()) + "</strong><br />" + printable_contents;
+    printable_contents = printable_contents + g_language_data[g_lang]["WORD_VOLUME"] + ": " + volume_sigma + " " + resolution + "</div>";
+
+    /* set printable */
+    document.body.innerHTML = printable_contents;
+
+    /* dispatch to queue */
     window.print();
-    document.body.innerHTML = originalContents;
-    RadioButton.SelectViaValue('rounding-option', roundingString);
-    RadioButton.SelectViaValue('resolution', resolutionString);
+
+    /* replace back to initial data state */
+    document.body.innerHTML = data_contents;
+
+    /* override the defaults back to set preference when the html body is reset */
+    RadioButton.SelectViaValue('rounding-option', rounding_string);
+    RadioButton.SelectViaValue('resolution', resolution_string);
+
+    /* re-attach event listeners */
     reset_event_listeners();
 }
 
