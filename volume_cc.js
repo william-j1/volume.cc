@@ -320,17 +320,11 @@ class NslPrompt
         document.getElementById('nsl-prompt-message').innerHTML = this.message();
         document.getElementById(this.underlay).style.opacity = "0.5";
         document.getElementById('nsl-prompt').style.display = "flex";
-        let sy = parseFloat(window.scrollY);
-        let ih = parseFloat(window.innerHeight)/2;
-        let bh = parseFloat(document.getElementById('nsl-prompt').offsetHeight)/2;
-        let iw = parseFloat(window.innerWidth)/2;
-        let bw = parseFloat(document.getElementById('nsl-prompt').offsetWidth)/2;
-        document.getElementById('nsl-prompt').style.top = (((ih - bh)+sy) - ( bh <= 199 ? 96 : 0 )).toString() + "px";        
-        document.getElementById('nsl-prompt').style.left = (iw-bw).toString() + "px";
         if ( showInput ) {
             document.getElementById('nsl-prompt-input').style.display = "block";            
             document.getElementById('nsl-prompt-value').focus();
         }
+        set_window_position();
     }
     /* title */
     title() {
