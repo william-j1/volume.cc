@@ -3354,7 +3354,7 @@ let g_meta_string = "";
 let g_eventsAdded = false;
 
 /* socket data */
-let g_socketData = "";
+let g_socket_data = "";
 
 /* flag for locking and unlocking workspace (io operations) */
 let g_locked_workspace = false;
@@ -6326,7 +6326,7 @@ function handle_response(responseData)
 
         /* open a list from the cloud io */
         case g_OPEN_LIST:
-            g_socketData = "";
+            g_socket_data = "";
             if (responseData.length > 0) {
                 g_nslPrompt.clear();
                 g_nslPrompt.setTitle(g_language_data[g_lang]["DATASET_OPEN"]);
@@ -6406,8 +6406,8 @@ function handle_response(responseData)
             if (responseData != 'FALSE')
             {
                 /* don't proceed until entire string has been returned */
-                g_socketData = g_socketData + responseData;
-                if ( g_socketData.indexOf("@END") == -1 )
+                g_socket_data = g_socket_data + responseData;
+                if ( g_socket_data.indexOf("@END") == -1 )
                     return;
 
                 /* terminator reached, unlock the workspace */
@@ -6584,10 +6584,10 @@ function handle_response(responseData)
             if ( responseData != 'FALSE' ) {
 
                 /* don't proceed until entire string has been returned */
-                g_socketData = g_socketData + responseData;
-                if ( g_socketData.indexOf("@END") == -1 )
+                g_socket_data = g_socket_data + responseData;
+                if ( g_socket_data.indexOf("@END") == -1 )
                     return;
-                responseData = g_socketData.slice(0, -4);
+                responseData = g_socket_data.slice(0, -4);
 
                 /* process the surplus payload */
                 let data_t = responseData.split(g_DELIMITOR_PRIORITY_3);
@@ -6601,7 +6601,7 @@ function handle_response(responseData)
                 }
 
                 /* reset socket variable */
-                g_socketData = "";
+                g_socket_data = "";
                 reload_surplus();
                 query_preferences();
             }
