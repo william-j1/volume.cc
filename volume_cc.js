@@ -14,7 +14,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/
 /* PI (STRING) VALUE STORED HERE - EXCEEDS Math.Pi width limit */
 const g_pi_string = "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";
 
-/* number of decimal places */
+/* number of decimal places expands when placed in a BigNumber object container */
 const g_pi_object = BigNumber(g_pi_string);
 
 /* number of decimal places preferred (not guaranteed) for numeric display */
