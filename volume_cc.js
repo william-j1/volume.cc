@@ -3321,7 +3321,7 @@ let g_lang;
 let g_user;
 
 /* application specific variables */
-const g_nslPrompt = new NslPrompt('body');
+const g_nsl_prompt = new NslPrompt('body');
 
 /* this is used to delimit the operation */
 let g_operation_code = 0;
@@ -3471,14 +3471,14 @@ const g_EDIT_TORUS = 250;
 /* remove volumetric object */
 function remove(label, hide_dialog = false) {
     if ( !hide_dialog ) {
-        g_nslPrompt.clear();
-        g_nslPrompt.setTitle(g_language_data[g_lang]["CONFIRM_REMOVAL"] +' '+ label);
-        g_nslPrompt.setMessage(g_language_data[g_lang]["REMOVAL_MSG"]);
-        g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DELETE"]);
-        g_nslPrompt.addButton(g_language_data[g_lang]["WORD_CANCEL"]);
-        g_nslPrompt.setMetadata(label);
-        g_nslPrompt.setOperation(g_REMOVE_VOLUME);
-        g_nslPrompt.show();
+        g_nsl_prompt.clear();
+        g_nsl_prompt.setTitle(g_language_data[g_lang]["CONFIRM_REMOVAL"] +' '+ label);
+        g_nsl_prompt.setMessage(g_language_data[g_lang]["REMOVAL_MSG"]);
+        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DELETE"]);
+        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_CANCEL"]);
+        g_nsl_prompt.setMetadata(label);
+        g_nsl_prompt.setOperation(g_REMOVE_VOLUME);
+        g_nsl_prompt.show();
         return;
     }
     let lstVolume = g_volume_lists.get(TabNavigation.get_active_tab());
@@ -3718,7 +3718,7 @@ function update_scaling()
         return;
     let scaleValue = parseFloat(scaleValue_t);
     let listOfVolumes = g_volume_lists.get(TabNavigation.get_active_tab());
-    listOfVolumes.setScale(g_nslPrompt.metaData(), scaleValue);
+    listOfVolumes.setScale(g_nsl_prompt.metaData(), scaleValue);
     update_display();
 }
 
@@ -3727,9 +3727,9 @@ function scale(label)
 {
     let listOfVolumes = g_volume_lists.get(TabNavigation.get_active_tab());
     let scaleValue = listOfVolumes.getScale(label);
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["SCALE_CHANGE"] +': '+ label);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["SCALING_MSG"] + `
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["SCALE_CHANGE"] +': '+ label);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["SCALING_MSG"] + `
     <br />
     <br />
     <div class="form-row">
@@ -3743,11 +3743,11 @@ function scale(label)
         <div class="clear"></div>
     </div>
     `);    
-    g_nslPrompt.setMetadata(label);
-    g_nslPrompt.setOperation(g_MODIFY_SCALING);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.show();
+    g_nsl_prompt.setMetadata(label);
+    g_nsl_prompt.setOperation(g_MODIFY_SCALING);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.show();
 }
 
 /* scale input */
@@ -3832,11 +3832,11 @@ function set_window_position()
 /* display passwd updated message */
 function display_passwd_reset()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["PASSWORD_UPDATED"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["PASSWORD_UPDATED_MSG"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
-    g_nslPrompt.show();
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["PASSWORD_UPDATED"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["PASSWORD_UPDATED_MSG"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
+    g_nsl_prompt.show();
 }
 
 /* query subscription NOW */
@@ -3860,13 +3860,13 @@ function query_subscription_status()
 /* display the subscription benefits */
 function display_subscription_benefits()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["SUBSCRIPTION_REQUIRED"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["SUBSCRIRTION_MSG"]);
-    g_nslPrompt.setOperation(g_ADD_SUBSCRIPTION);
-    g_nslPrompt.addButton(g_language_data[g_lang]["SUBSCRIBE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.show();
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["SUBSCRIPTION_REQUIRED"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["SUBSCRIRTION_MSG"]);
+    g_nsl_prompt.setOperation(g_ADD_SUBSCRIPTION);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["SUBSCRIBE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.show();
 }
 
 /* display the volumetric dataset */
@@ -3930,9 +3930,9 @@ function update_password_strength()
 
 function display_change_passwd()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["PASSWORD_CHANGE"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["PASSWORD_MSG"] + `
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["PASSWORD_CHANGE"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["PASSWORD_MSG"] + `
     <br />
     <br />
     <table>
@@ -3956,29 +3956,29 @@ function display_change_passwd()
         </tr>
     </table>
     `);
-    g_nslPrompt.addButton(g_language_data[g_lang]["PROCESS_TEXT"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(g_CHANGE_PASSWD);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(g_language_data[g_lang]["PROCESS_TEXT"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(g_CHANGE_PASSWD);
+    g_nsl_prompt.show();
     document.getElementById('password').focus();
 }
 
 function display_activation_text()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["ACTIVATION_OK"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["ACTIVATION_MSG"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["ACCESS_MY_ACCOUNT"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(g_ACCESS_MY_ACCOUNT);
-    g_nslPrompt.show();
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["ACTIVATION_OK"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["ACTIVATION_MSG"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["ACCESS_MY_ACCOUNT"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(g_ACCESS_MY_ACCOUNT);
+    g_nsl_prompt.show();
 }
 
 function display_account_register()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["NEW_MEMBERSHIP"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["NEW_MEMBERSHIP_MSG"] + `
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["NEW_MEMBERSHIP"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["NEW_MEMBERSHIP_MSG"] + `
     <br />
     <br />
     <table align="center">
@@ -4023,19 +4023,19 @@ function display_account_register()
         </tr>
     </table>
     `);
-    g_nslPrompt.setOperation(g_MAKE_NEW_ACCOUNT);
-    g_nslPrompt.addButton(g_language_data[g_lang]["REGISTER"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);    
-    g_nslPrompt.show();
+    g_nsl_prompt.setOperation(g_MAKE_NEW_ACCOUNT);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["REGISTER"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);    
+    g_nsl_prompt.show();
     refresh_verification_image();
     document.getElementById('email_addr').focus();
 }
 
 function display_account_forgot()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["PASSWORD_FORGOTTEN"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["PASSWORD_FORGOTTEN_MSG"] + `
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["PASSWORD_FORGOTTEN"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["PASSWORD_FORGOTTEN_MSG"] + `
     <br />
     <br />
     <table align="center">
@@ -4065,19 +4065,19 @@ function display_account_forgot()
         </tr>
     </table>
     `);
-    g_nslPrompt.setOperation(g_FORGOT_PASSWD);
-    g_nslPrompt.addButton(g_language_data[g_lang]["PROCESS"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);    
-    g_nslPrompt.show();
+    g_nsl_prompt.setOperation(g_FORGOT_PASSWD);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["PROCESS"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);    
+    g_nsl_prompt.show();
     refresh_verification_image();
     document.getElementById('email_addr').focus();
 }
 
 function display_account_login()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["ACCOUNT_LOGIN_TEXT"]);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["ACCOUNT_LOGIN_TEXT"]);
+    g_nsl_prompt.setMessage(`
     <table align="center">
         <tr>
             <td align="right"><label for="email_addr">`+ g_language_data[g_lang]["EMAIL"] +`:</label></td>
@@ -4105,10 +4105,10 @@ function display_account_login()
         </tr>
     </table>
     `);
-    g_nslPrompt.setOperation(g_LOGIN_ACCOUNT);
-    g_nslPrompt.addButton(g_language_data[g_lang]["AUTHENTICATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);    
-    g_nslPrompt.show();
+    g_nsl_prompt.setOperation(g_LOGIN_ACCOUNT);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["AUTHENTICATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);    
+    g_nsl_prompt.show();
     document.getElementById('email_addr').focus();
 }
 
@@ -4116,25 +4116,25 @@ function display_account_access()
 {
     if ( has_service_expired() || g_user.isLoggedIn() )
         return;
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["ACCOUNT_ACCESS"]);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["ACCOUNT_ACCESS"]);
+    g_nsl_prompt.setMessage(`
     <div id="access-icons">
         <div id="access-forgot" class="access-icon-box" onclick="javascript:display_account_forgot();">`+g_language_data[g_lang]["ACCOUNT_OPTION_FORGOT_PASSWD"]+`</div>
         <div id="access-register" class="access-icon-box" onclick="javascript:display_account_register();">`+g_language_data[g_lang]["ACCOUNT_OPTION_REGISTER"]+`</div>
         <div id="access-login" class="access-icon-box" onclick="javascript:display_account_login();">`+g_language_data[g_lang]["ACCOUNT_OPTION_LOGIN"]+`</div>
     </div>
     `);
-    g_nslPrompt.setOperation(g_VIEW_ACCOUNT_ICONS);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.show();
+    g_nsl_prompt.setOperation(g_VIEW_ACCOUNT_ICONS);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.show();
 }
 
 function display_account_benefits()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["ACCOUNT_BENEFITS"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["ACCOUNT_MAKE_TEXT_1"] + `
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["ACCOUNT_BENEFITS"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["ACCOUNT_MAKE_TEXT_1"] + `
     <br />
     <br />
     `+ g_language_data[g_lang]["ACCOUNT_MAKE_TEXT_2"] +`
@@ -4148,48 +4148,48 @@ function display_account_benefits()
         <li class="dialog-list">`+ g_language_data[g_lang]["ACCOUNT_MAKE_BENEFIT_5"] +`</li>
     </ul>
     `);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["ACCESS_MY_ACCOUNT"]);
-    g_nslPrompt.setOperation(g_ACCESS_MY_ACCOUNT);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["ACCESS_MY_ACCOUNT"]);
+    g_nsl_prompt.setOperation(g_ACCESS_MY_ACCOUNT);
+    g_nsl_prompt.show();
 }
 
 function display_login_prompt()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["ACCOUNT_LOGIN_REQUIRED"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["ACCOUNT_LOGIN_TEXT_1"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["ACCESS_MY_ACCOUNT"]);
-    g_nslPrompt.setOperation(g_ACCESS_MY_ACCOUNT);
-    g_nslPrompt.show();
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["ACCOUNT_LOGIN_REQUIRED"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["ACCOUNT_LOGIN_TEXT_1"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["ACCESS_MY_ACCOUNT"]);
+    g_nsl_prompt.setOperation(g_ACCESS_MY_ACCOUNT);
+    g_nsl_prompt.show();
 }
 
 function display_label_invalid()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["LABEL_MISFORMED"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["LABEL_POOR_SYMBOLICS"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
-    g_nslPrompt.show();
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["LABEL_MISFORMED"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["LABEL_POOR_SYMBOLICS"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
+    g_nsl_prompt.show();
 }
 
 function display_no_label_prompt()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["LABEL_MISSING"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["LABEL_MISSING_TEXT_1"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
-    g_nslPrompt.show();
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["LABEL_MISSING"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["LABEL_MISSING_TEXT_1"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
+    g_nsl_prompt.show();
 }
 
 function display_duplicate_label_prompt()
 {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["LABEL_DUPLICATED"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["LABEL_MISSING_TEXT_2"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
-    g_nslPrompt.show();
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["LABEL_DUPLICATED"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["LABEL_MISSING_TEXT_2"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
+    g_nsl_prompt.show();
 }
 
 function numeric_inputs_ok()
@@ -4198,20 +4198,20 @@ function numeric_inputs_ok()
     {
         if ( isNaN(arguments[n]) )
         {
-            g_nslPrompt.clear();
-            g_nslPrompt.setTitle(g_language_data[g_lang]["LABEL_MISFORMED_INPUTS"]);
-            g_nslPrompt.setMessage(g_language_data[g_lang]["LABEL_INPUTS_NOT_NUMERICAL"]);
-            g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
-            g_nslPrompt.show();
+            g_nsl_prompt.clear();
+            g_nsl_prompt.setTitle(g_language_data[g_lang]["LABEL_MISFORMED_INPUTS"]);
+            g_nsl_prompt.setMessage(g_language_data[g_lang]["LABEL_INPUTS_NOT_NUMERICAL"]);
+            g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
+            g_nsl_prompt.show();
             return false;
         }
         if ( arguments[n] <= 0 )
         {
-            g_nslPrompt.clear();
-            g_nslPrompt.setTitle(g_language_data[g_lang]["LABEL_NON_POSITIVE"]);
-            g_nslPrompt.setMessage(g_language_data[g_lang]["LABEL_INPUTS_MUST_BE_POSITIVE"]);
-            g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
-            g_nslPrompt.show();
+            g_nsl_prompt.clear();
+            g_nsl_prompt.setTitle(g_language_data[g_lang]["LABEL_NON_POSITIVE"]);
+            g_nsl_prompt.setMessage(g_language_data[g_lang]["LABEL_INPUTS_MUST_BE_POSITIVE"]);
+            g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
+            g_nsl_prompt.show();
             return false;
         }
     }
@@ -4221,7 +4221,7 @@ function numeric_inputs_ok()
 function prime_dialog_inputs(label_t)
 {
     if ( label_t.length > 0 ) {
-        g_nslPrompt.setMetadata(label_t);
+        g_nsl_prompt.setMetadata(label_t);
         document.getElementById('quantity_control').remove();
         document.getElementById('label').value = label_t;
         document.getElementById('label').readOnly = true;
@@ -4236,9 +4236,9 @@ function prime_dialog_inputs(label_t)
 function display_barrel_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["BARREL"] : g_language_data[g_lang]["MODIFY"]+' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["BARREL"] : g_language_data[g_lang]["MODIFY"]+' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`barrel.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -4300,19 +4300,19 @@ function display_barrel_dialog(operationCode, label_t = '')
         </div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_capsule_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["CAPSULE"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["CAPSULE"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`capsule.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -4362,19 +4362,19 @@ function display_capsule_dialog(operationCode, label_t = '')
         </div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_pyramid_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["RECTANGULAR_PYRAMID_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["RECTANGULAR_PYRAMID_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`pyramid.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -4428,19 +4428,19 @@ function display_pyramid_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_pyramid_frustum_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["PYRAMID_FRUSTUM"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["PYRAMID_FRUSTUM"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`pyramidal_frustum.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -4524,19 +4524,19 @@ function display_pyramid_frustum_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_cone_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["CONE"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["CONE"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`cone.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -4586,19 +4586,19 @@ function display_cone_dialog(operationCode, label_t = '')
         </div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_conical_frustum_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["CONICAL_FRUSTUM"] : g_language_data[g_lang]["MODIFY"] + ' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["CONICAL_FRUSTUM"] : g_language_data[g_lang]["MODIFY"] + ' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`conical.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -4658,19 +4658,19 @@ function display_conical_frustum_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_cube_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["CUBE"] : g_language_data[g_lang]["MODIFY"] + ' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["CUBE"] : g_language_data[g_lang]["MODIFY"] + ' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`cube.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -4708,19 +4708,19 @@ function display_cube_dialog(operationCode, label_t = '')
         </div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_cylinder_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["CYLINDER"] : g_language_data[g_lang]["MODIFY"] + ' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["CYLINDER"] : g_language_data[g_lang]["MODIFY"] + ' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`cylinder.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -4770,19 +4770,19 @@ function display_cylinder_dialog(operationCode, label_t = '')
         </div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_ellipsoid_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["ELLIPSOID"] : g_language_data[g_lang]["MODIFY"] + ' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["ELLIPSOID"] : g_language_data[g_lang]["MODIFY"] + ' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`ellipsoid.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -4842,19 +4842,19 @@ function display_ellipsoid_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_rectangular_tank_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["RECTANGLAR_TANK"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["RECTANGLAR_TANK"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`rectangular_tank.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -4914,21 +4914,21 @@ function display_rectangular_tank_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function has_service_expired()
 {
     if ( !g_is_running ) {
-        g_nslPrompt.clear();
-        g_nslPrompt.setTitle(g_language_data[g_lang]["SERVICE_INACTIVE"]);
-        g_nslPrompt.setMessage(g_language_data[g_lang]["SERVICE_SUSPENDED"]);
-        g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
-        g_nslPrompt.show();
+        g_nsl_prompt.clear();
+        g_nsl_prompt.setTitle(g_language_data[g_lang]["SERVICE_INACTIVE"]);
+        g_nsl_prompt.setMessage(g_language_data[g_lang]["SERVICE_SUSPENDED"]);
+        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
+        g_nsl_prompt.show();
         return true;
     }
     return false;
@@ -4937,9 +4937,9 @@ function has_service_expired()
 function display_sphere_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["WORD_SPHERE"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["WORD_SPHERE"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`sphere.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -4975,19 +4975,19 @@ function display_sphere_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_spherical_cap_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["SPHERICAL_CAP"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["SPHERICAL_CAP"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`spherical_cap.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5035,19 +5035,19 @@ function display_spherical_cap_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_stadium_tub_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["STADIUM_FRUSTUM"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["STADIUM_FRUSTUM"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`stadium.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5131,18 +5131,18 @@ function display_stadium_tub_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
 }
 
 function display_torus_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["TORUS"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["TORUS"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`torus.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5190,19 +5190,19 @@ function display_torus_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_trapezoidal_prism_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["TRAPEZOIDAL_PRISM"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["TRAPEZOIDAL_PRISM"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`trapezoidal_prism.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5274,19 +5274,19 @@ function display_trapezoidal_prism_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_triangular_prism_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["TRIANGULAR_PRISM_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["TRIANGULAR_PRISM_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`triangular_prism.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5346,19 +5346,19 @@ function display_triangular_prism_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_triangular_pyramid_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["TRIANGULAR_PYRAMID_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["TRIANGULAR_PYRAMID_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`triangular_pyramid.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5418,19 +5418,19 @@ function display_triangular_pyramid_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_heptagonal_prism_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["HEPTAGONAL_PRISM_TEXT"] : g_language_data[g_lang]["MODIFY"]+' '+label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["HEPTAGONAL_PRISM_TEXT"] : g_language_data[g_lang]["MODIFY"]+' '+label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`heptagonal_prism.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5478,19 +5478,19 @@ function display_heptagonal_prism_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_heptagonal_pyramid_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["HEPTAGONAL_PYRAMID_TEXT"] : g_language_data[g_lang]["MODIFY"]+' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["HEPTAGONAL_PYRAMID_TEXT"] : g_language_data[g_lang]["MODIFY"]+' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`heptagonal_pyramid.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5538,19 +5538,19 @@ function display_heptagonal_pyramid_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_hexagonal_prism_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+ g_language_data[g_lang]["HEXAGONAL_PRISM_TEXT"] : g_language_data[g_lang]["MODIFY"]+' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+ g_language_data[g_lang]["HEXAGONAL_PRISM_TEXT"] : g_language_data[g_lang]["MODIFY"]+' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`hexagonal_prism.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5599,19 +5599,19 @@ function display_hexagonal_prism_dialog(operationCode, label_t = '')
         </div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_hexagonal_pyramid_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["HEXAGONAL_PYRAMID_TEXT"]: g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["HEXAGONAL_PYRAMID_TEXT"]: g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`hexagonal_pyramid.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5659,19 +5659,19 @@ function display_hexagonal_pyramid_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_octagonal_prism_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["OCTAGONAL_PRISM_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["OCTAGONAL_PRISM_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`octagonal_prism.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5719,19 +5719,19 @@ function display_octagonal_prism_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_octagonal_pyramid_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["OCTAGONAL_PYRAMID_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["OCTAGONAL_PYRAMID_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`octagonal_pyramid.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5775,19 +5775,19 @@ function display_octagonal_pyramid_dialog(operationCode, label_t = '')
         </div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_pentagonal_prism_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["PENTAGONAL_PRISM_TEXT"] : g_language_data[g_lang]["MODIFY"]+' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"]+' '+g_language_data[g_lang]["PENTAGONAL_PRISM_TEXT"] : g_language_data[g_lang]["MODIFY"]+' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`pentagonal_prism.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5835,19 +5835,19 @@ function display_pentagonal_prism_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
 function display_pentagonal_pyramid_dialog(operationCode, label_t = '')
 {
     let default_t = VolumeCCApp.default_option_resolution();
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["PENTAGONAL_PYRAMID_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
-    g_nslPrompt.setMessage(`
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(label_t.length == 0 ? g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["PENTAGONAL_PYRAMID_TEXT"] : g_language_data[g_lang]["MODIFY"] +' '+ label_t);
+    g_nsl_prompt.setMessage(`
     <img class="dialog_image" src="/p.php?!=fi&ip=`+ g_image_prefix +`pentagonal_pyramid.png" alt="" />
     <div class="form-row">
         <div class="form-label">
@@ -5895,10 +5895,10 @@ function display_pentagonal_pyramid_dialog(operationCode, label_t = '')
         <div class="clear"></div>
     </div>
     `);
-    g_nslPrompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(operationCode);
-    g_nslPrompt.show();
+    g_nsl_prompt.addButton(label_t.length == 0 ? g_language_data[g_lang]["WORD_SAVE"] : g_language_data[g_lang]["WORD_UPDATE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(operationCode);
+    g_nsl_prompt.show();
     prime_dialog_inputs(label_t);
 }
 
@@ -5971,9 +5971,9 @@ function show_dialog(divIdentifier)
             <option value="meters">`+ g_language_data[g_lang]["CUBIC_METER"] +`</option>
             `;
             html_t = html_t.replace('"'+resolution_t+'">', '"'+resolution_t+'" selected="selected">');
-            g_nslPrompt.clear();
-            g_nslPrompt.setTitle(g_language_data[g_lang]["DEFINE_SURPLUS"]);
-            g_nslPrompt.setMessage(g_language_data[g_lang]["SURPLUS_MESSAGE_TEXT_1"]+`
+            g_nsl_prompt.clear();
+            g_nsl_prompt.setTitle(g_language_data[g_lang]["DEFINE_SURPLUS"]);
+            g_nsl_prompt.setMessage(g_language_data[g_lang]["SURPLUS_MESSAGE_TEXT_1"]+`
             <br />
             <br />
             `+g_language_data[g_lang]["SURPLUS_MESSAGE_TEXT_2"]+`
@@ -5993,10 +5993,10 @@ function show_dialog(divIdentifier)
                 <div class="clear"></div>
             </div>
             `);
-            g_nslPrompt.addButton(g_language_data[g_lang]["VERIFY_N_SAVE"]);
-            g_nslPrompt.addButton(g_language_data[g_lang]["WORD_CANCEL"]);
-            g_nslPrompt.setOperation(g_ADD_SURPLUS_VOLUME);
-            g_nslPrompt.show();
+            g_nsl_prompt.addButton(g_language_data[g_lang]["VERIFY_N_SAVE"]);
+            g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_CANCEL"]);
+            g_nsl_prompt.setOperation(g_ADD_SURPLUS_VOLUME);
+            g_nsl_prompt.show();
             Nsl.sleep(300).then(() => {
                 document.getElementById('label').value = "";
                 document.getElementById('label').focus();
@@ -6048,11 +6048,11 @@ function show_dialog(divIdentifier)
             display_torus_dialog(g_ADD_TORUS);
             break;
         case "about":
-            g_nslPrompt.clear();
-            g_nslPrompt.setTitle(g_language_data[g_lang]["ABOUT_TEXT"]);
-            g_nslPrompt.setMessage(g_language_data[g_lang]["ABOUT"]);
-            g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
-            g_nslPrompt.show();
+            g_nsl_prompt.clear();
+            g_nsl_prompt.setTitle(g_language_data[g_lang]["ABOUT_TEXT"]);
+            g_nsl_prompt.setMessage(g_language_data[g_lang]["ABOUT"]);
+            g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+            g_nsl_prompt.show();
             break;
     }
 }
@@ -6060,13 +6060,13 @@ function show_dialog(divIdentifier)
 function new_list() {
     if ( has_service_expired() || g_locked_workspace )
         return;
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["NEW_DATASET"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["TITLE_FOR_DATASET"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["OPEN"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-    g_nslPrompt.setOperation(g_ADD_LIST_TAB);
-    g_nslPrompt.show(true);
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["NEW_DATASET"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["TITLE_FOR_DATASET"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["OPEN"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+    g_nsl_prompt.setOperation(g_ADD_LIST_TAB);
+    g_nsl_prompt.show(true);
 }
 
 function add_list(tab_title) {
@@ -6143,13 +6143,13 @@ function save_as_list() {
     }
     if ( has_service_expired() || g_locked_workspace )
         return;
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["SET_TITLE"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["SET_TITLE_TEXT_1"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_SAVE"], true);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_CANCEL"]);
-    g_nslPrompt.setOperation(g_PROCESS_SAVE_AS);
-    g_nslPrompt.show(true);
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["SET_TITLE"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["SET_TITLE_TEXT_1"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_SAVE"], true);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_CANCEL"]);
+    g_nsl_prompt.setOperation(g_PROCESS_SAVE_AS);
+    g_nsl_prompt.show(true);
 }
 
 /* close a volume list */
@@ -6204,27 +6204,27 @@ function reload_surplus() {
 
 /* display list already defined message  */
 function display_list_already_defined() {
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["DUPLICATE_TITLE"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["DUPLICATE_TEXT"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
-    g_nslPrompt.show();
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["DUPLICATE_TITLE"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["DUPLICATE_TEXT"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
+    g_nsl_prompt.show();
 }
 
 /* open file from database using the descriptor given */
 function open_file(file_t) {
     if ( TabNavigation.has_title(file_t) ) {
-        g_nslPrompt.clear();
-        g_nslPrompt.setTitle(g_language_data[g_lang]["VOLUME_DATASET_ALREADY_OPEN"]);
-        g_nslPrompt.setMessage(g_language_data[g_lang]["VOLUME_DATASET_TEXT"]);
-        g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
-        g_nslPrompt.show();
+        g_nsl_prompt.clear();
+        g_nsl_prompt.setTitle(g_language_data[g_lang]["VOLUME_DATASET_ALREADY_OPEN"]);
+        g_nsl_prompt.setMessage(g_language_data[g_lang]["VOLUME_DATASET_TEXT"]);
+        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+        g_nsl_prompt.show();
         let n = TabNavigation.index_of(file_t);
         TabNavigation.focus(n);
         return;
     }
     lock_workspace();
-    g_nslPrompt.hide();
+    g_nsl_prompt.hide();
     g_operation_code = g_LOAD_FILE_FROM_DB;
     WebClient.get("/p.php?!=load&descriptor=" + file_t, handle_response);
 }
@@ -6272,22 +6272,22 @@ function handle_response(responseData)
     {
         /* add surplus volume */
         case g_ADD_SURPLUS_VOLUME:
-            g_nslPrompt.clear();
-            g_nslPrompt.setTitle(g_language_data[g_lang]["SURPLUS_VOLUME"]);
+            g_nsl_prompt.clear();
+            g_nsl_prompt.setTitle(g_language_data[g_lang]["SURPLUS_VOLUME"]);
             if (responseData != 'FALSE' && responseData.indexOf(':') != -1) {
                 let strt = responseData.toString().split(':');
                 g_surplus_values.set(strt[0], parseFloat(strt[1]));
-                g_nslPrompt.setMessage(g_language_data[g_lang]["SURPLUS_VOLUME_TEXT"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["SURPLUS_VOLUME_TEXT"]);
                 reload_surplus();
             }
             else if (responseData == 'NONE_SUBSCRIBER_LIMIT_REACHED') {
-                g_nslPrompt.setMessage(g_language_data[g_lang]["SURPLUS_LIMIT_REACHED"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["SURPLUS_LIMIT_REACHED"]);
             }
             else {
-                g_nslPrompt.setMessage(g_language_data[g_lang]["SURPLUS_SAVE_IO_ERROR"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["SURPLUS_SAVE_IO_ERROR"]);
             }
-            g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
-            g_nslPrompt.show();
+            g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
+            g_nsl_prompt.show();
             break;
 
         /* remove surplus from account */
@@ -6301,11 +6301,11 @@ function handle_response(responseData)
                 update_display();
             }
             else {
-                g_nslPrompt.clear();
-                g_nslPrompt.setTitle(g_language_data[g_lang]["PROCESSING_ERROR"]);
-                g_nslPrompt.setMessage(g_language_data[g_lang]["SURPLUS_REMOVAL_ERROR"]);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
-                g_nslPrompt.show();
+                g_nsl_prompt.clear();
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["PROCESSING_ERROR"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["SURPLUS_REMOVAL_ERROR"]);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+                g_nsl_prompt.show();
             }
             break;
 
@@ -6322,48 +6322,48 @@ function handle_response(responseData)
         case g_OPEN_LIST:
             g_socket_data = "";
             if (responseData.length > 0) {
-                g_nslPrompt.clear();
-                g_nslPrompt.setTitle(g_language_data[g_lang]["DATASET_OPEN"]);
-                g_nslPrompt.setMessage(compile_file_list_string(responseData));
-                g_nslPrompt.addButton(g_language_data[g_lang]["DATASET_CANCEL"]);
-                g_nslPrompt.show();
+                g_nsl_prompt.clear();
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["DATASET_OPEN"]);
+                g_nsl_prompt.setMessage(compile_file_list_string(responseData));
+                g_nsl_prompt.addButton(g_language_data[g_lang]["DATASET_CANCEL"]);
+                g_nsl_prompt.show();
                 document.getElementById('file-search-text').focus();
             }
             else {
-                g_nslPrompt.clear();
-                g_nslPrompt.setTitle(g_language_data[g_lang]["NO_DATASETS_EXIST"]);
-                g_nslPrompt.setMessage(g_language_data[g_lang]["NO_LISTS_DEFINED"]);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
-                g_nslPrompt.show();
+                g_nsl_prompt.clear();
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["NO_DATASETS_EXIST"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["NO_LISTS_DEFINED"]);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
+                g_nsl_prompt.show();
             }
             break;
 
         /* process the save request to the database */
         case g_PROCESS_SAVE_TO_DB:
             unlock_workspace();
-            g_nslPrompt.clear();
+            g_nsl_prompt.clear();
 
             if (responseData == "TRUE") {
-                g_nslPrompt.setTitle(g_language_data[g_lang]["VOLUMES_SAVED"]);
-                g_nslPrompt.setMessage(g_language_data[g_lang]["THE_VOLUMES_FOR"] +' '+ TabNavigation.get_active_tab() +' '+ g_language_data[g_lang]["HAVE_BEEN_SAVED"]);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["VOLUMES_SAVED"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["THE_VOLUMES_FOR"] +' '+ TabNavigation.get_active_tab() +' '+ g_language_data[g_lang]["HAVE_BEEN_SAVED"]);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
                 g_has_unsaved_changes = false;
             }
             else if (responseData == "NONE_SUBSCRIBER_LIMIT_REACHED") {
-                g_nslPrompt.setTitle(g_language_data[g_lang]["USAGE_LIMIT_REACHED"]);
-                g_nslPrompt.setMessage(g_language_data[g_lang]["VOLUME_LIST_LIMIT"]);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["USAGE_LIMIT_REACHED"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["VOLUME_LIST_LIMIT"]);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
             }
             else if (responseData != "ALREADY_SAVED" ) {
-                g_nslPrompt.setOperation(g_RETRY_SAVING_LIST);
-                g_nslPrompt.setTitle(g_language_data[g_lang]["SAVING_PROBLEM"]);
-                g_nslPrompt.setMessage(g_language_data[g_lang]["THE_VOLUMES_FOR"] +' '+ TabNavigation.get_active_tab() +' '+ g_language_data[g_lang]["COULD_NOT_BE_SAVED"]);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_RETRY"]);
+                g_nsl_prompt.setOperation(g_RETRY_SAVING_LIST);
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["SAVING_PROBLEM"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["THE_VOLUMES_FOR"] +' '+ TabNavigation.get_active_tab() +' '+ g_language_data[g_lang]["COULD_NOT_BE_SAVED"]);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_RETRY"]);
             }
             else
                 return;
-            g_nslPrompt.show();
+            g_nsl_prompt.show();
             break;
 
         /* process save as */
@@ -6385,11 +6385,11 @@ function handle_response(responseData)
         case g_QUERY_FILE_SEARCH:
 
             let searchTerm = document.getElementById('file-search-text').value.trim();
-            g_nslPrompt.clear();
-            g_nslPrompt.setTitle(g_language_data[g_lang]["DATASET_OPEN"]);
-            g_nslPrompt.setMessage(compile_file_list_string(responseData));
-            g_nslPrompt.addButton(g_language_data[g_lang]["DATASET_CANCEL"]);
-            g_nslPrompt.show();
+            g_nsl_prompt.clear();
+            g_nsl_prompt.setTitle(g_language_data[g_lang]["DATASET_OPEN"]);
+            g_nsl_prompt.setMessage(compile_file_list_string(responseData));
+            g_nsl_prompt.addButton(g_language_data[g_lang]["DATASET_CANCEL"]);
+            g_nsl_prompt.show();
             document.getElementById('file-search-text').value = searchTerm;
             document.getElementById('file-search-text').focus();
             break;
@@ -6436,13 +6436,13 @@ function handle_response(responseData)
         case g_LOGIN_ACCOUNT:
             if (responseData.indexOf('TRUE') == -1)
             {
-                g_nslPrompt.clear();
-                g_nslPrompt.setTitle(g_language_data[g_lang]["PROCESSING_ISSUE"]);
-                g_nslPrompt.setMessage(responseData +'.');
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_RETRY"]);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
-                g_nslPrompt.setOperation(g_RETRY_LOGIN);
-                g_nslPrompt.show();
+                g_nsl_prompt.clear();
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["PROCESSING_ISSUE"]);
+                g_nsl_prompt.setMessage(responseData +'.');
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_RETRY"]);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+                g_nsl_prompt.setOperation(g_RETRY_LOGIN);
+                g_nsl_prompt.show();
             }
             else
             {
@@ -6556,21 +6556,21 @@ function handle_response(responseData)
             }
             else
             {
-                g_nslPrompt.clear();
-                g_nslPrompt.setTitle(g_language_data[g_lang]["PROCESSING_ISSUE"]);
-                g_nslPrompt.setMessage(g_language_data[g_lang]["PROCESSOR_ERROR"]);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
-                g_nslPrompt.show();
+                g_nsl_prompt.clear();
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["PROCESSING_ISSUE"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["PROCESSOR_ERROR"]);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
+                g_nsl_prompt.show();
             }
             break;
 
         /* make new account */
         case g_MAKE_NEW_ACCOUNT:
-            g_nslPrompt.clear();
-            g_nslPrompt.setTitle(g_language_data[g_lang]["REGISTRATION_TITLE"]);
-            g_nslPrompt.setMessage(responseData);
-            g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
-            g_nslPrompt.show();
+            g_nsl_prompt.clear();
+            g_nsl_prompt.setTitle(g_language_data[g_lang]["REGISTRATION_TITLE"]);
+            g_nsl_prompt.setMessage(responseData);
+            g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
+            g_nsl_prompt.show();
             break;
 
         /* process surplus xml from database */
@@ -6606,32 +6606,32 @@ function handle_response(responseData)
 
         /* forgotten password */
         case g_FORGOT_PASSWD:
-            g_nslPrompt.clear();
-            g_nslPrompt.setTitle(g_language_data[g_lang]["PASSWORD_FORGOTTEN"]);
-            g_nslPrompt.setMessage(responseData + '.');
-            g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
-            g_nslPrompt.show();
+            g_nsl_prompt.clear();
+            g_nsl_prompt.setTitle(g_language_data[g_lang]["PASSWORD_FORGOTTEN"]);
+            g_nsl_prompt.setMessage(responseData + '.');
+            g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
+            g_nsl_prompt.show();
             break;
 
         /* change password */
         case g_CHANGE_PASSWD:
-            g_nslPrompt.clear();
+            g_nsl_prompt.clear();
             if (responseData != 'FALSE') {
-                g_nslPrompt.setTitle(g_language_data[g_lang]["PASSWORD_CHANGED"]);
-                g_nslPrompt.setMessage(g_language_data[g_lang]["PASSWORD_CHANGED_OK"]);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["PASSWORD_CHANGED"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["PASSWORD_CHANGED_OK"]);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
             }
             else {
-                g_nslPrompt.setTitle(g_language_data[g_lang]["PROCESSING_ISSUE"]);
-                g_nslPrompt.setMessage(g_language_data[g_lang]["PASSWORD_CHANGE_ERROR"]);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["PROCESSING_ISSUE"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["PASSWORD_CHANGE_ERROR"]);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
             }
-            g_nslPrompt.show();
+            g_nsl_prompt.show();
             break;
 
         /* check subscription status */
         case g_CHECK_SUBSCRIPTION:
-            g_nslPrompt.clear();
+            g_nsl_prompt.clear();
             if (responseData.indexOf(':') != -1) {
                 let string_t = responseData.split(':');
                 let status_t = '';
@@ -6650,8 +6650,8 @@ function handle_response(responseData)
                     status_t = g_language_data[g_lang]["SUBSCRIPTION_EXPIRED"];
                     g_isSubscribed = false;
                 }
-                g_nslPrompt.setTitle(g_language_data[g_lang]["SUBSCRIPTION_STATUS"]);
-                g_nslPrompt.setMessage(`
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["SUBSCRIPTION_STATUS"]);
+                g_nsl_prompt.setMessage(`
                 <table>
                     <tr>
                         <td>`+g_language_data[g_lang]["WORD_STATUS"]+`</td><td class="stat-left-padding">`+ status_t +`</td>
@@ -6661,51 +6661,51 @@ function handle_response(responseData)
                     </tr>
                 </table>
                 `);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
                 if ( string_t[1] == '1' )
                 {
-                    g_nslPrompt.addButton(g_language_data[g_lang]["SUBSCRIPTION_CANCEL"]);
-                    g_nslPrompt.setOperation(g_CANCEL_SUB);
+                    g_nsl_prompt.addButton(g_language_data[g_lang]["SUBSCRIPTION_CANCEL"]);
+                    g_nsl_prompt.setOperation(g_CANCEL_SUB);
                 }
                 else
                 {
-                    g_nslPrompt.addButton(g_language_data[g_lang]["SUBSCRIPTION_RESUME"]);
-                    g_nslPrompt.setOperation(g_RESUME_SUB);
+                    g_nsl_prompt.addButton(g_language_data[g_lang]["SUBSCRIPTION_RESUME"]);
+                    g_nsl_prompt.setOperation(g_RESUME_SUB);
                 }
             }
             else
             {
-                g_nslPrompt.setOperation(g_ADD_SUBSCRIPTION);
-                g_nslPrompt.setTitle(g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["SUBSCRIPTION"]);
-                g_nslPrompt.setMessage(g_language_data[g_lang]["SUBSCRIPTION_NOT_ACTIVE"]);
-                g_nslPrompt.addButton(g_language_data[g_lang]["SUBSCRIPTION"]);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+                g_nsl_prompt.setOperation(g_ADD_SUBSCRIPTION);
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["ADD"] +' '+ g_language_data[g_lang]["SUBSCRIPTION"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["SUBSCRIPTION_NOT_ACTIVE"]);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["SUBSCRIPTION"]);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
             }
-            g_nslPrompt.show();
+            g_nsl_prompt.show();
             break;
 
         /* resume subscription */
         case g_RESUME_SUB:
-            g_nslPrompt.clear();
-            g_nslPrompt.setTitle(g_language_data[g_lang]["SUBSCRIPTION_RESUME"]);
+            g_nsl_prompt.clear();
+            g_nsl_prompt.setTitle(g_language_data[g_lang]["SUBSCRIPTION_RESUME"]);
             if ( responseData != 'FALSE' )
-                g_nslPrompt.setMessage(g_language_data[g_lang]["SUBSCRIPTION_RESUME_TEXT"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["SUBSCRIPTION_RESUME_TEXT"]);
             else
-                g_nslPrompt.setMessage(g_language_data[g_lang]["SUBSCRIPTION_ERROR_TEXT"]);
-            g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
-            g_nslPrompt.show();
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["SUBSCRIPTION_ERROR_TEXT"]);
+            g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+            g_nsl_prompt.show();
             break;
 
         /* cancel subscription */
         case g_CANCEL_SUB:
-            g_nslPrompt.clear();
-            g_nslPrompt.setTitle(g_language_data[g_lang]["SUBSCRIPTION_CANCEL_TITLE"]);
+            g_nsl_prompt.clear();
+            g_nsl_prompt.setTitle(g_language_data[g_lang]["SUBSCRIPTION_CANCEL_TITLE"]);
             if (responseData != 'FALSE')
-                g_nslPrompt.setMessage(g_language_data[g_lang]["SUBSCRIPTION_CANCEL_SCHEDULED"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["SUBSCRIPTION_CANCEL_SCHEDULED"]);
             else
-                g_nslPrompt.setMessage(g_language_data[g_lang]["SUBSCRIPTION_ERROR"]);
-            g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
-            g_nslPrompt.show();
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["SUBSCRIPTION_ERROR"]);
+            g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+            g_nsl_prompt.show();
             break;
 
         /* query subscription status */
@@ -6726,11 +6726,11 @@ function handle_response(responseData)
 
         /*  */
         case g_EXPORT_VOLUME:
-            g_nslPrompt.clear();
+            g_nsl_prompt.clear();
             if (responseData != 'ERROR')
             {
-                g_nslPrompt.setTitle('Sharable Volume');
-                g_nslPrompt.setMessage(`
+                g_nsl_prompt.setTitle('Sharable Volume');
+                g_nsl_prompt.setMessage(`
                 <div class="form-row">
                     <div class="form-label">
                         <label for="id">`+ g_language_data[g_lang]["WORD_IDENTIFIER"] +`:</label>
@@ -6750,16 +6750,16 @@ function handle_response(responseData)
                     <div class="clear"></div>
                 </div>
                 `);
-                g_nslPrompt.setOperation(g_SHOW_EXPORT_LINK);
-                g_nslPrompt.addButton(g_language_data[g_lang]["COPY_URL"]);
+                g_nsl_prompt.setOperation(g_SHOW_EXPORT_LINK);
+                g_nsl_prompt.addButton(g_language_data[g_lang]["COPY_URL"]);
             }
             else
             {
-                g_nslPrompt.setTitle(g_language_data[g_lang]["NETWORK_PROBLEM"]);
-                g_nslPrompt.setMessage(g_language_data[g_lang]["DATASET_UNPROCESSED"]);
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["NETWORK_PROBLEM"]);
+                g_nsl_prompt.setMessage(g_language_data[g_lang]["DATASET_UNPROCESSED"]);
             }
-            g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
-            g_nslPrompt.show();
+            g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+            g_nsl_prompt.show();
             break;
 
         /*  */
@@ -6768,11 +6768,11 @@ function handle_response(responseData)
                 let load_ok = import_data(responseData);
                 unlock_workspace();
                 if ( !load_ok ) {
-                    g_nslPrompt.clear();
-                    g_nslPrompt.setTitle(g_language_data[g_lang]["FORMAT_PROBLEM"]);
-                    g_nslPrompt.setMessage(g_language_data[g_lang]["VOLUME_DATASET_UNPROCESSED"]);
-                    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
-                    g_nslPrompt.show();
+                    g_nsl_prompt.clear();
+                    g_nsl_prompt.setTitle(g_language_data[g_lang]["FORMAT_PROBLEM"]);
+                    g_nsl_prompt.setMessage(g_language_data[g_lang]["VOLUME_DATASET_UNPROCESSED"]);
+                    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+                    g_nsl_prompt.show();
                 }
                 g_operation_code = 1001;
                 WebClient.get("/p.php?!=is_logged_in&is_js_app=true", handle_response);
@@ -6861,11 +6861,11 @@ function update_barrel()
     height = ResolutionSolver.linear_transform(height, res_h.toLowerCase(), g_resolution.Millimeters);
     ediameter = ResolutionSolver.linear_transform(ediameter, res_e.toLowerCase(), g_resolution.Millimeters);
     mdiameter = ResolutionSolver.linear_transform(mdiameter, res_m.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new Barrel(g_nslPrompt.metaData(), height, ediameter, mdiameter);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new Barrel(g_nsl_prompt.metaData(), height, ediameter, mdiameter);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -6879,11 +6879,11 @@ function update_capsule()
         return;
     radius = ResolutionSolver.linear_transform(radius, res_r.toLowerCase(), g_resolution.Millimeters);
     height = ResolutionSolver.linear_transform(height, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new Capsule(g_nslPrompt.metaData(), radius, height);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new Capsule(g_nsl_prompt.metaData(), radius, height);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -6897,11 +6897,11 @@ function update_cone()
         return;
     radius = ResolutionSolver.linear_transform(radius, res_r.toLowerCase(), g_resolution.Millimeters);
     height = ResolutionSolver.linear_transform(height, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new Cone(g_nslPrompt.metaData(), radius, height);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new Cone(g_nsl_prompt.metaData(), radius, height);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -6912,11 +6912,11 @@ function update_cube()
         return;
     let el_res = document.getElementById('unit_for_length').value;
     edge_length = ResolutionSolver.linear_transform(edge_length, el_res.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new Cube(g_nslPrompt.metaData(), edge_length);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new Cube(g_nsl_prompt.metaData(), edge_length);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -6930,11 +6930,11 @@ function update_cylinder()
         return;
     inner = ResolutionSolver.linear_transform(inner, res_id.toLowerCase(), g_resolution.Millimeters);
     length = ResolutionSolver.linear_transform(length, res_len.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new Cylinder(g_nslPrompt.metaData(), inner, length);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new Cylinder(g_nsl_prompt.metaData(), inner, length);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -6951,11 +6951,11 @@ function update_ellipsoid()
     axis_a = ResolutionSolver.linear_transform(axis_a, res_axis_a.toLowerCase(), g_resolution.Millimeters);
     axis_b = ResolutionSolver.linear_transform(axis_b, res_axis_b.toLowerCase(), g_resolution.Millimeters);
     axis_c = ResolutionSolver.linear_transform(axis_c, res_axis_c.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new Ellipsoid(g_nslPrompt.metaData(), axis_a, axis_b, axis_c);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new Ellipsoid(g_nsl_prompt.metaData(), axis_a, axis_b, axis_c);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -6972,11 +6972,11 @@ function update_frustum()
     radius_top = ResolutionSolver.linear_transform(radius_top, res_rtop.toLowerCase(), g_resolution.Millimeters);
     radius_bottom = ResolutionSolver.linear_transform(radius_bottom, res_rbottom.toLowerCase(), g_resolution.Millimeters);
     height = ResolutionSolver.linear_transform(height, res_height.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new ConicalFrustum(g_nslPrompt.metaData(), radius_top, radius_bottom, height);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new ConicalFrustum(g_nsl_prompt.metaData(), radius_top, radius_bottom, height);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -6993,11 +6993,11 @@ function update_pyramid()
     length = ResolutionSolver.linear_transform(length, res_l.toLowerCase(), g_resolution.Millimeters);
     width = ResolutionSolver.linear_transform(width, res_w.toLowerCase(), g_resolution.Millimeters);
     height = ResolutionSolver.linear_transform(height, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new Pyramid(g_nslPrompt.metaData(), length, width, height);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new Pyramid(g_nsl_prompt.metaData(), length, width, height);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7020,11 +7020,11 @@ function update_pyramid_frustum()
     height = ResolutionSolver.linear_transform(height, res_h.toLowerCase(), g_resolution.Millimeters);
     valuep = ResolutionSolver.linear_transform(valuep, res_p.toLowerCase(), g_resolution.Millimeters);
     valueq = ResolutionSolver.linear_transform(valueq, res_q.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new PyramidFrustum(g_nslPrompt.metaData(), length, depth, height, valuep, valueq);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new PyramidFrustum(g_nsl_prompt.metaData(), length, depth, height, valuep, valueq);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7041,11 +7041,11 @@ function update_rect_tank()
     length = ResolutionSolver.linear_transform(length, res_l.toLowerCase(), g_resolution.Millimeters);
     width = ResolutionSolver.linear_transform(width, res_w.toLowerCase(), g_resolution.Millimeters);
     height = ResolutionSolver.linear_transform(height, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new RectangularTank(g_nslPrompt.metaData(), length, width, height);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new RectangularTank(g_nsl_prompt.metaData(), length, width, height);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7059,11 +7059,11 @@ function update_spherical_cap()
         return;
     rBase = ResolutionSolver.linear_transform(rBase, res_l.toLowerCase(), g_resolution.Millimeters);
     height = ResolutionSolver.linear_transform(height, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new SphericalCap(g_nslPrompt.metaData(), rBase, height);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new SphericalCap(g_nsl_prompt.metaData(), rBase, height);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7086,11 +7086,11 @@ function update_stadium_frustum()
     ll = ResolutionSolver.linear_transform(ll, res_ll.toLowerCase(), g_resolution.Millimeters);
     lw = ResolutionSolver.linear_transform(lw, res_lw.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new StadiumFrustum(g_nslPrompt.metaData(), ul, uw, ll, lw, h);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new StadiumFrustum(g_nsl_prompt.metaData(), ul, uw, ll, lw, h);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7099,11 +7099,11 @@ function update_torus()
     let major_rad = document.getElementById('major_r').value;
     let minor_rad = document.getElementById('minor_r').value;
     if ( parseFloat(minor_rad) >= parseFloat(major_rad) ) {
-        g_nslPrompt.clear();
-        g_nslPrompt.setTitle(g_language_data[g_lang]["TORUS_PARAM_TITLE"]);
-        g_nslPrompt.setMessage(g_language_data[g_lang]["TORUS_PARAM_BOUNDS"]);
-        g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
-        g_nslPrompt.show();
+        g_nsl_prompt.clear();
+        g_nsl_prompt.setTitle(g_language_data[g_lang]["TORUS_PARAM_TITLE"]);
+        g_nsl_prompt.setMessage(g_language_data[g_lang]["TORUS_PARAM_BOUNDS"]);
+        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
+        g_nsl_prompt.show();
         return;
     }
     let major_res = document.getElementById('unit_for_major_r').value;
@@ -7112,11 +7112,11 @@ function update_torus()
         return;
     major_rad = ResolutionSolver.linear_transform(major_rad, major_res.toLowerCase(), g_resolution.Millimeters);
     minor_rad = ResolutionSolver.linear_transform(minor_rad, minor_res.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new Torus(g_nslPrompt.metaData(), major_rad, minor_rad);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new Torus(g_nsl_prompt.metaData(), major_rad, minor_rad);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7127,11 +7127,11 @@ function update_sphere()
     if ( !numeric_inputs_ok(radius) )
         return;
     radius = ResolutionSolver.linear_transform(radius, res_r.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new Sphere(g_nslPrompt.metaData(), radius);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new Sphere(g_nsl_prompt.metaData(), radius);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7145,11 +7145,11 @@ function update_heptagonal_prism()
         return;
     b = ResolutionSolver.linear_transform(b, res_b.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new HeptagonalPrism(g_nslPrompt.metaData(), b, h);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new HeptagonalPrism(g_nsl_prompt.metaData(), b, h);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7163,11 +7163,11 @@ function update_heptagonal_pyramid()
         return;
     b = ResolutionSolver.linear_transform(b, res_b.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new HeptagonalPyramid(g_nslPrompt.metaData(), b, h);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new HeptagonalPyramid(g_nsl_prompt.metaData(), b, h);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7181,11 +7181,11 @@ function update_hexagonal_prism()
         return;
     b = ResolutionSolver.linear_transform(b, res_b.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new HexagonalPrism(g_nslPrompt.metaData(), b, h);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new HexagonalPrism(g_nsl_prompt.metaData(), b, h);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7199,11 +7199,11 @@ function update_hexagonal_pyramid()
         return;
     b = ResolutionSolver.linear_transform(b, res_b.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new HexagonalPyramid(g_nslPrompt.metaData(), b, h);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new HexagonalPyramid(g_nsl_prompt.metaData(), b, h);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7217,11 +7217,11 @@ function update_octagonal_prism()
         return;
     b = ResolutionSolver.linear_transform(b, res_b.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new OctagonalPrism(g_nslPrompt.metaData(), b, h);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new OctagonalPrism(g_nsl_prompt.metaData(), b, h);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7235,11 +7235,11 @@ function update_octagonal_pyramid()
         return;
     b = ResolutionSolver.linear_transform(b, res_b.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new OctagonalPyramid(g_nslPrompt.metaData(), b, h);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new OctagonalPyramid(g_nsl_prompt.metaData(), b, h);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7253,11 +7253,11 @@ function update_pentagonal_prism()
         return;
     b = ResolutionSolver.linear_transform(b, res_b.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new PentagonalPrism(g_nslPrompt.metaData(), b, h);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new PentagonalPrism(g_nsl_prompt.metaData(), b, h);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7271,11 +7271,11 @@ function update_pentagonal_pyramid()
         return;
     b = ResolutionSolver.linear_transform(b, res_b.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new PentagonalPyramid(g_nslPrompt.metaData(), b, h);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new PentagonalPyramid(g_nsl_prompt.metaData(), b, h);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7292,11 +7292,11 @@ function update_triangular_prism()
     b = ResolutionSolver.linear_transform(b, res_b.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
     l = ResolutionSolver.linear_transform(l, res_l.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new TriangularPrism(g_nslPrompt.metaData(), b, h, l);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new TriangularPrism(g_nsl_prompt.metaData(), b, h, l);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7313,11 +7313,11 @@ function update_triangular_pyramid()
     l = ResolutionSolver.linear_transform(l, res_l.toLowerCase(), g_resolution.Millimeters);
     d = ResolutionSolver.linear_transform(d, res_d.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new TriangularPyramid(g_nslPrompt.metaData(), l, d, h);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new TriangularPyramid(g_nsl_prompt.metaData(), l, d, h);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -7337,11 +7337,11 @@ function update_trapezoidal_prism()
     b = ResolutionSolver.linear_transform(b, res_b.toLowerCase(), g_resolution.Millimeters);
     h = ResolutionSolver.linear_transform(h, res_h.toLowerCase(), g_resolution.Millimeters);
     d = ResolutionSolver.linear_transform(d, res_d.toLowerCase(), g_resolution.Millimeters);
-    let volumeObject = new TrapezoidalPrism(g_nslPrompt.metaData(), t, b, h, d);
-    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nslPrompt.metaData());
+    let volumeObject = new TrapezoidalPrism(g_nsl_prompt.metaData(), t, b, h, d);
+    let volumeInList = g_volume_lists.get(TabNavigation.get_active_tab()).get(g_nsl_prompt.metaData());
     if ( volumeObject.equals(volumeInList) )
         return;
-    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nslPrompt.metaData(), volumeObject);
+    g_volume_lists.get(TabNavigation.get_active_tab()).modify(g_nsl_prompt.metaData(), volumeObject);
     update_display();
 }
 
@@ -8035,11 +8035,11 @@ function add_torus()
     let major_radius = document.getElementById('major_r').value;
     let minor_radius = document.getElementById('minor_r').value;
     if ( parseFloat(minor_radius) >= parseFloat(major_radius) ) {
-        g_nslPrompt.clear();
-        g_nslPrompt.setTitle(g_language_data[g_lang]["TORUS_PARAM_TITLE"]);
-        g_nslPrompt.setMessage(g_language_data[g_lang]["TORUS_PARAM_BOUNDS"]);
-        g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
-        g_nslPrompt.show();
+        g_nsl_prompt.clear();
+        g_nsl_prompt.setTitle(g_language_data[g_lang]["TORUS_PARAM_TITLE"]);
+        g_nsl_prompt.setMessage(g_language_data[g_lang]["TORUS_PARAM_BOUNDS"]);
+        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
+        g_nsl_prompt.show();
         return;
     }
     let major_res = document.getElementById('unit_for_major_r').value;
@@ -8066,10 +8066,10 @@ function nsl_prompt_button(index)
      obtain operation code and process distinct
      operation routine based on this identifier
      */
-    g_operation_code = g_nslPrompt.operation();
-    let buttonText = g_nslPrompt.buttonText(index);
-    let inputValue = g_nslPrompt.inputValue().trim();
-    g_nslPrompt.hide();
+    g_operation_code = g_nsl_prompt.operation();
+    let buttonText = g_nsl_prompt.buttonText(index);
+    let inputValue = g_nsl_prompt.inputValue().trim();
+    g_nsl_prompt.hide();
 
     /* operation code */
     switch ( g_operation_code )
@@ -8079,7 +8079,7 @@ function nsl_prompt_button(index)
          */
         case g_VIEW_ACCOUNT_ICONS:
             if ( buttonText == g_language_data[g_lang]["WORD_DISMISS"] )
-                g_nslPrompt.hide();
+                g_nsl_prompt.hide();
             break;
         /*
          save surplus volumes
@@ -8094,11 +8094,11 @@ function nsl_prompt_button(index)
                     sv_value = ResolutionSolver.cubic_transform(sv_value, sv_unit, g_resolution.Millimeters);
                 if ( sv_value <= 0 || sv_label.trim().length == 0 || isNaN(sv_value) )
                 {
-                    g_nslPrompt.clear();
-                    g_nslPrompt.setTitle(g_language_data[g_lang]["INPUT_PROBLEM"]);
-                    g_nslPrompt.setMessage(g_language_data[g_lang]["SURPLUS_INTEGRITY_FLAG"]);
-                    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
-                    g_nslPrompt.show();
+                    g_nsl_prompt.clear();
+                    g_nsl_prompt.setTitle(g_language_data[g_lang]["INPUT_PROBLEM"]);
+                    g_nsl_prompt.setMessage(g_language_data[g_lang]["SURPLUS_INTEGRITY_FLAG"]);
+                    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
+                    g_nsl_prompt.show();
                     return;
                 }
                 WebClient.get("/p.php?!=add_surplus&label=" + sv_label.replace(" ", "+") + "&mm3=" + sv_value, handle_response);
@@ -8112,11 +8112,11 @@ function nsl_prompt_button(index)
             if (buttonText == g_language_data[g_lang]["OPEN"]) {
                 if (inputValue.length != 0) {
                     if (TabNavigation.has_title(inputValue) || inputValue == "Untitled") {
-                        g_nslPrompt.clear();
-                        g_nslPrompt.setTitle(g_language_data[g_lang]["DUPLICATE_TITLE"]);
-                        g_nslPrompt.setMessage(g_language_data[g_lang]["DUPLICATE_TEXT"]);
-                        g_nslPrompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
-                        g_nslPrompt.show();
+                        g_nsl_prompt.clear();
+                        g_nsl_prompt.setTitle(g_language_data[g_lang]["DUPLICATE_TITLE"]);
+                        g_nsl_prompt.setMessage(g_language_data[g_lang]["DUPLICATE_TEXT"]);
+                        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"]);
+                        g_nsl_prompt.show();
                         return;
                     }
                     if (g_user.isLoggedIn() && !TabNavigation.has_title(inputValue))
@@ -8583,11 +8583,11 @@ function nsl_prompt_button(index)
                 let passwd_str = document.getElementById('passwd_field').value;
                 let verify_str = document.getElementById('secure').value;
                 if ( verify_str.length != 5 ) {
-                    g_nslPrompt.clear();
-                    g_nslPrompt.setTitle(g_language_data[g_lang]["PROCESSING_ERROR_TEXT"]);
-                    g_nslPrompt.setMessage(g_language_data[g_lang]["VERIFICATION_CODE_MISMATCH"]);
-                    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
-                    g_nslPrompt.show();                    
+                    g_nsl_prompt.clear();
+                    g_nsl_prompt.setTitle(g_language_data[g_lang]["PROCESSING_ERROR_TEXT"]);
+                    g_nsl_prompt.setMessage(g_language_data[g_lang]["VERIFICATION_CODE_MISMATCH"]);
+                    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"], true);
+                    g_nsl_prompt.show();                    
                     return;
                 }
                 if ( email_addr.length == 0 || passwd_str.length == 0 )
@@ -8627,11 +8627,11 @@ function nsl_prompt_button(index)
                 let verify_str = document.getElementById('secure').value;
                 let newsletter = 'no';
                 if ( email_addr.length == 0 || username.length == 0 || password_s.length == 0 || verify_str.length != 5 ) {
-                    g_nslPrompt.clear();
-                    g_nslPrompt.setTitle(g_language_data[g_lang]["PROCESSING_ERROR_TEXT"]);
-                    g_nslPrompt.setMessage(g_language_data[g_lang]["FORM_INTEGRITY_ERROR"]);
-                    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-                    g_nslPrompt.show();
+                    g_nsl_prompt.clear();
+                    g_nsl_prompt.setTitle(g_language_data[g_lang]["PROCESSING_ERROR_TEXT"]);
+                    g_nsl_prompt.setMessage(g_language_data[g_lang]["FORM_INTEGRITY_ERROR"]);
+                    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+                    g_nsl_prompt.show();
                     return;
                 }
                 let post_data = 'email_addr='+ email_addr +'&username='+ username +'&passwd_field='+ password_s +'&secure=' + verify_str + '&newsletter=' + newsletter;
@@ -8646,11 +8646,11 @@ function nsl_prompt_button(index)
                 let password_cur = document.getElementById('password').value;
                 let password_new = document.getElementById('password_new').value;
                 if ( password_cur.length <= 7 || password_new.length <= 7 ) {
-                    g_nslPrompt.clear();
-                    g_nslPrompt.setTitle(g_language_data[g_lang]["PROCESSING_ERROR_TEXT"]);
-                    g_nslPrompt.setMessage(g_language_data[g_lang]["PASSWORD_FIELDS_NOT_CORRECT"]);
-                    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-                    g_nslPrompt.show();
+                    g_nsl_prompt.clear();
+                    g_nsl_prompt.setTitle(g_language_data[g_lang]["PROCESSING_ERROR_TEXT"]);
+                    g_nsl_prompt.setMessage(g_language_data[g_lang]["PASSWORD_FIELDS_NOT_CORRECT"]);
+                    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+                    g_nsl_prompt.show();
                     return;
                 }
                 let post_data = 'passwd='+password_cur+'&passwd_new='+password_new;
@@ -8686,7 +8686,7 @@ function nsl_prompt_button(index)
         case g_REMOVE_VOLUME:
             if ( buttonText == g_language_data[g_lang]["WORD_DELETE"] ) {
                 let lstVolume = g_volume_lists.get(TabNavigation.get_active_tab());
-                lstVolume.delete(g_nslPrompt.metaData());
+                lstVolume.delete(g_nsl_prompt.metaData());
                 display_volume_list();
                 update_menu_highlights();
             }
@@ -8740,13 +8740,13 @@ function reset() {
     let volumeList = g_volume_lists.get(TabNavigation.get_active_tab());
     if ( !volumeList.hasUndo() && !volumeList.hasRedo() )
         return;
-    g_nslPrompt.clear();
-    g_nslPrompt.setTitle(g_language_data[g_lang]["RESET_DATA"]);
-    g_nslPrompt.setMessage(g_language_data[g_lang]["RESET_TEXT"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_YES"]);
-    g_nslPrompt.addButton(g_language_data[g_lang]["WORD_CANCEL"]);
-    g_nslPrompt.setOperation(g_RESET_LIST_DATA);
-    g_nslPrompt.show();
+    g_nsl_prompt.clear();
+    g_nsl_prompt.setTitle(g_language_data[g_lang]["RESET_DATA"]);
+    g_nsl_prompt.setMessage(g_language_data[g_lang]["RESET_TEXT"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_YES"]);
+    g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_CANCEL"]);
+    g_nsl_prompt.setOperation(g_RESET_LIST_DATA);
+    g_nsl_prompt.show();
 }
 
 /* close the active tab */
@@ -8823,7 +8823,7 @@ function init()
         }
 
         /* shift key is pressed and prompt window is not visible */
-        if (e.shiftKey && !g_nslPrompt.is_visible()) {
+        if (e.shiftKey && !g_nsl_prompt.is_visible()) {
             switch(e.which) {
                 /* SHIFT+S */ case 83: show_dialog('add_surplus'); break;
                 /* SHIFT+A */case 65: show_dialog('add_capsule'); break;
@@ -9017,9 +9017,9 @@ function import_data(contents)
                     return true;
 
                 /* show comment to the recipient */
-                g_nslPrompt.clear();
-                g_nslPrompt.setTitle(g_language_data[g_lang]["COMMENTS_TITLE"]);
-                g_nslPrompt.setMessage(`
+                g_nsl_prompt.clear();
+                g_nsl_prompt.setTitle(g_language_data[g_lang]["COMMENTS_TITLE"]);
+                g_nsl_prompt.setMessage(`
                 <div class="form-row">
                     <div class="form-label">
                         <label for="comments">`+ g_language_data[g_lang]["WORD_COMMENTS"] +`:</label>
@@ -9029,8 +9029,8 @@ function import_data(contents)
                     </div>
                 </div>
                 `);
-                g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-                g_nslPrompt.show();
+                g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+                g_nsl_prompt.show();
             }
             return true;
     }}
@@ -9056,11 +9056,11 @@ function _import(e) {
 
         /* if not_okay */
         if ( !load_ok ) {
-            g_nslPrompt.clear();
-            g_nslPrompt.setTitle(g_language_data[g_lang]["RESET_DATA"]);
-            g_nslPrompt.setMessage(g_language_data[g_lang]["VOLUME_DATASET_UNPROCESSED"]);
-            g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-            g_nslPrompt.show();
+            g_nsl_prompt.clear();
+            g_nsl_prompt.setTitle(g_language_data[g_lang]["RESET_DATA"]);
+            g_nsl_prompt.setMessage(g_language_data[g_lang]["VOLUME_DATASET_UNPROCESSED"]);
+            g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+            g_nsl_prompt.show();
         }
         document.getElementById('load_recipe').value = "";
 	};
@@ -9099,10 +9099,10 @@ function _export(type)
 
     /* netshare export type .... */
     if ( type == 'network' ) {
-        g_nslPrompt.clear();
-        g_nslPrompt.setOperation(g_EXPORT_VOLUME_TYPE);
-        g_nslPrompt.setTitle(g_language_data[g_lang]["NETSHARE_EXPORT"]);
-        g_nslPrompt.setMessage(g_language_data[g_lang]["COMMENTS_TEXT"] +`
+        g_nsl_prompt.clear();
+        g_nsl_prompt.setOperation(g_EXPORT_VOLUME_TYPE);
+        g_nsl_prompt.setTitle(g_language_data[g_lang]["NETSHARE_EXPORT"]);
+        g_nsl_prompt.setMessage(g_language_data[g_lang]["COMMENTS_TEXT"] +`
         <br />
         <br />
         <div class="form-row">
@@ -9115,9 +9115,9 @@ function _export(type)
             <div class="clear"></div>
         </div>
         `);
-        g_nslPrompt.addButton(g_language_data[g_lang]["WORD_SHARE"]);
-        g_nslPrompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
-        g_nslPrompt.show();
+        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_SHARE"]);
+        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_DISMISS"]);
+        g_nsl_prompt.show();
         return;
     }
 
@@ -9263,8 +9263,8 @@ function switch_tab_to(element)
     wrap_about.style.display="none";
     document.getElementById('l_'+element).classList.add("is_selected");
     document.getElementById(element).style.display="block";
-    if ( g_nslPrompt.is_visible() )
-        g_nslPrompt.hide();
+    if ( g_nsl_prompt.is_visible() )
+        g_nsl_prompt.hide();
 }
 
 /* sets and resets the tabular menu */
@@ -9588,11 +9588,11 @@ function extract_language() {
    pushing the return key to save time processing form dialogs */
 window.addEventListener("keydown", (event) => {
     if ( event.key == 'Enter' ) {
-        if ( g_nslPrompt == null )
+        if ( g_nsl_prompt == null )
             return;
-        if ( !g_nslPrompt.is_visible() )
+        if ( !g_nsl_prompt.is_visible() )
             return;
-        let indexViaEnter = g_nslPrompt.indexViaEnterKey();
+        let indexViaEnter = g_nsl_prompt.indexViaEnterKey();
         if ( indexViaEnter == -1 )
             return;
         nsl_prompt_button(indexViaEnter);
