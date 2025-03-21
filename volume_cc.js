@@ -8888,9 +8888,6 @@ function init()
 /* print the volume list */
 function print_volume_list() {
 
-    if ( has_service_expired() )
-        return;
-
     /* n volumetric objects */
     if ( g_volume_lists.get(TabNavigation.get_active_tab()).count() == 0 )
         return;
