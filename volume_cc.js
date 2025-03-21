@@ -8773,58 +8773,84 @@ function init()
 {   
     document.onkeydown = function(event) {
         var e = event || window.event;
-        if (e.altKey) {
+
+        /* if alt key is pressed */
+        if (e.altKey)
+        {
+            /* ALT+N */
             if (e.which == 78)
                 new_list();
+
+            /* ALT+O */
             if (e.which == 79)
                 open_list();
+
+            /* ALT+Z */
             if (e.which == 90)
                 undo();
+
+            /* ALT+R */
             if (e.which == 82)
                 redo();
+
+            /* ALT+V */
             if (e.which == 86)
                 reset();
+
+            /* ALT+C */
             if (e.which == 67)
                 close_active_tab();
+
+            /* ALT+P */
             if (e.which == 80)
                 print_volume_list();
+
+            /* ALT+W */
             if (e.which == 83)
                 _export('datafile');
+
+            /* ALT+X */
             if (e.which == 88)
                 _export('network');
+
+            /* ALT+B */
             if (e.which == 98)
                 _export('surplus');
+
+            /* ALT+L */
             if (e.which == 76)
                 document.getElementById('load_recipe').click();
         }
+
+        /* shift key is pressed and prompt window is not visible */
         if (e.shiftKey && !g_nslPrompt.is_visible()) {
             switch(e.which) {
-                case 83: show_dialog('add_surplus'); break;
-                case 65: show_dialog('add_capsule'); break;
-                case 66: show_dialog('add_cone'); break;
-                case 67: show_dialog('add_cylinder'); break;
-                case 68: show_dialog('add_conical_frustum'); break;
-                case 82: show_dialog('add_cube'); break;
-                case 70: show_dialog('add_ellipsoid'); break;
-                case 74: show_dialog('add_pyramid_frustum'); break;
-                case 81: show_dialog('add_pyramid'); break;
-                case 87: show_dialog('add_rectangular_tank'); break;
-                case 90: show_dialog('add_sphere'); break;
-                case 88: show_dialog('add_spherical_cap'); break;
-                case 84: show_dialog('add_triangular_prism'); break;
-                case 71: show_dialog('add_trapezoidal_prism'); break;
-                case 76: show_dialog('add_octagonal_prism'); break;
-                case 80: show_dialog('add_heptagonal_prism'); break;
-                case 79: show_dialog('add_hexagonal_prism'); break;
-                case 77: show_dialog('add_pentagonal_prism'); break;
-                case 89: show_dialog('add_triangular_pyramid'); break;
-                case 78: show_dialog('add_pentagonal_pyramid'); break;
-                case 74: show_dialog('add_octagonal_pyramid'); break;
-                case 75: show_dialog('add_hexagonal_pyramid'); break;
-                case 72: show_dialog('add_heptagonal_pyramid'); break;
-                case 86: show_dialog('add_stadium_frustum'); break;
-                case 69: show_dialog('add_barrel'); break;
-                case 85: show_dialog('add_torus'); break;
+                /* SHIFT+S */ case 83: show_dialog('add_surplus'); break;
+                /* SHIFT+A */case 65: show_dialog('add_capsule'); break;
+                /* SHIFT+B */case 66: show_dialog('add_cone'); break;
+                /* SHIFT+C */case 67: show_dialog('add_cylinder'); break;
+                /* SHIFT+D */case 68: show_dialog('add_conical_frustum'); break;
+                /* SHIFT+R */case 82: show_dialog('add_cube'); break;
+                /* SHIFT+F */case 70: show_dialog('add_ellipsoid'); break;
+                /* SHIFT+J */case 74: show_dialog('add_pyramid_frustum'); break;
+                /* SHIFT+S */case 81: show_dialog('add_pyramid'); break;
+                /* SHIFT+W */case 87: show_dialog('add_rectangular_tank'); break;
+                /* SHIFT+Z */case 90: show_dialog('add_sphere'); break;
+                /* SHIFT+X */case 88: show_dialog('add_spherical_cap'); break;
+                /* SHIFT+T */case 84: show_dialog('add_triangular_prism'); break;
+                /* SHIFT+G */case 71: show_dialog('add_trapezoidal_prism'); break;
+                /* SHIFT+L */case 76: show_dialog('add_octagonal_prism'); break;
+                /* SHIFT+P */case 80: show_dialog('add_heptagonal_prism'); break;
+                /* SHIFT+O */case 79: show_dialog('add_hexagonal_prism'); break;
+                /* SHIFT+M */case 77: show_dialog('add_pentagonal_prism'); break;
+                /* SHIFT+Y */case 89: show_dialog('add_triangular_pyramid'); break;
+                /* SHIFT+N */case 78: show_dialog('add_pentagonal_pyramid'); break;
+                /* SHIFT+J */case 74: show_dialog('add_octagonal_pyramid'); break;
+                /* SHIFT+K */case 75: show_dialog('add_hexagonal_pyramid'); break;
+                /* SHIFT+H */case 72: show_dialog('add_heptagonal_pyramid'); break;
+                /* SHIFT+V */case 86: show_dialog('add_stadium_frustum'); break;
+                /* SHIFT+E */case 69: show_dialog('add_barrel'); break;
+                /* SHIFT+U */case 85: show_dialog('add_torus'); break;
     }}}
 
     /* record initialisation time */
