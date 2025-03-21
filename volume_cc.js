@@ -9055,7 +9055,8 @@ function _export(type)
         return;
 
     /* type of export maybe surplus */
-    if ( type == 'surplus' ) {
+    if ( type == 'surplus' )
+    {
         if (!g_user.isLoggedIn()) {
             display_login_prompt();
             return;
@@ -9119,25 +9120,25 @@ function _export(type)
     let file_blob = new Blob([data_t], {type: "text/plain"});
 
     /* produce download tag */
-	let download_link = document.createElement("a");
+    let download_link = document.createElement("a");
 
     /* download link */
-	download_link.download = title_t;
-	download_link.innerHTML = '';
+    download_link.download = title_t;
+    download_link.innerHTML = '';
 
     /* create object */
-	if ( window.webkitURL != null ) {
-		download_link.href = window.webkitURL.createObjectURL(file_blob);
+    if ( window.webkitURL != null ) {
+        download_link.href = window.webkitURL.createObjectURL(file_blob);
         download_link.click();
         return;
-	}
+    }
 
     /* download link */
     download_link.href = window.URL.createObjectURL(file_blob);
-	download_link.onclick = destroyClickedElement;
-	download_link.style.display = "none";
-	document.body.appendChild(download_link);
-	download_link.click();
+    download_link.onclick = destroyClickedElement;
+    download_link.style.display = "none";
+    document.body.appendChild(download_link);
+    download_link.click();
 }
 
 /* set image prefix based on regional locale */
