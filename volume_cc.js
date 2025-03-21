@@ -5906,11 +5906,11 @@ function show_dialog(divIdentifier)
 {
     if ( g_locked_workspace )
         return;
-    if ( typeof g_authorTime === 'undefined' ) {
+    if ( typeof g_author_time === 'undefined' ) {
         window.location="https://www.volume.cc/";
         return;
     }
-    if ( (Date.now()/1000) > g_authorTime && !g_has_unsaved_changes ) {
+    if ( (Date.now()/1000) > g_author_time && !g_has_unsaved_changes ) {
         window.location="https://www.volume.cc/";
         return;
     }
@@ -8051,13 +8051,13 @@ function add_torus()
 function nsl_prompt_button(index)
 {
     /* zero authorship time has been defined */
-    if ( typeof g_authorTime === 'undefined' ) {
+    if ( typeof g_author_time === 'undefined' ) {
         window.location="https:/www.volume.cc/";
         return;
     }
 
     /* time has passed where an update maybe necessary thru the access point */
-    if ( (Date.now()/1000) > g_authorTime && !g_has_unsaved_changes ) {
+    if ( (Date.now()/1000) > g_author_time && !g_has_unsaved_changes ) {
         window.location="https:/www.volume.cc/";
         return;
     }
@@ -9638,4 +9638,4 @@ window.addEventListener("resize", (event) => {
 /* author time is used to signal whether a server 
    update may have passed thereby implying that a
    refresh by the recipient client may be necessary */
-let g_authorTime = Math.floor(Date.now()/1000)+86400;
+let g_author_time = Math.floor(Date.now()/1000)+86400;
