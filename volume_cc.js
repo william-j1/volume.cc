@@ -3345,7 +3345,7 @@ let g_surplus_add_cancel = false;
 let g_meta_string = "";
 
 /* init flag for event listeners */
-let g_eventsAdded = false;
+let g_events_added = false;
 
 /* socket data */
 let g_socket_data = "";
@@ -9225,7 +9225,7 @@ function reset_event_listeners()
     let originalContents;
     let roundingString = VolumeCCApp.rounding();
     let resolutionString = VolumeCCApp.resolution();
-    if ( g_eventsAdded ) {
+    if ( g_events_added ) {
         originalContents = document.body.innerHTML;
         document.body.innerHTML = '';
         document.body.innerHTML = originalContents;
@@ -9520,7 +9520,7 @@ function reset_event_listeners()
     torus.addEventListener("click", function() {
         show_dialog('add_torus');
     });
-    g_eventsAdded = true;
+    g_events_added = true;
 }
 
 /* extract language parameter */
