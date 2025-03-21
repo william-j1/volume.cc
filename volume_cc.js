@@ -8990,7 +8990,7 @@ function import_data(contents)
             if ( data_t.length == 3 )
             {
                 /* if comment is untrimmed whitespace */
-                if (  data_t[2].trim().length == 0 )
+                if ( data_t[2].trim().length == 0 )
                     return true;
 
                 /* show comment to the recipient */
