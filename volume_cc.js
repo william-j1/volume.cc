@@ -9693,4 +9693,4 @@ window.addEventListener("resize", (event) => {
 /* author time is used to signal whether a server 
    update may have passed thereby implying that a
    refresh by the recipient client may be necessary */
-let g_author_time = Math.floor(Date.now()/1000)+86400;
+const g_author_time = Math.floor(Date.now()/1000)+86400;
