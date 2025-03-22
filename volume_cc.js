@@ -23,7 +23,7 @@ const g_precision_preference = 20;
 /* resolution list of metrics from min to max */
 const g_resolution =
 {
-    /* wavelengths of light */
+    /* wavelengths of light resolution, "volumetric propagation rate" */
     Angstroms:"angstroms",
 
     /* nanotechnology */
