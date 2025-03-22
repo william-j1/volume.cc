@@ -6186,7 +6186,7 @@ function close_list(index_t, skip_unsaved_check = false) {
         g_nsl_prompt.clear();
         g_nsl_prompt.setTitle(g_language_data[g_lang]["TITLE_UNSAVED"]);
         g_nsl_prompt.setMessage(g_language_data[g_lang]["MESSAGE_UNSAVED"]);
-        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_YES"]);
+        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_YES"], true);
         g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_CANCEL"]);
         g_nsl_prompt.setOperation(g_CLOSE_LIST_UNSAVED);
         g_nsl_prompt.show();
