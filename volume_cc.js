@@ -6129,18 +6129,28 @@ function unlock_workspace()
 
 /* save routine prior to save as */
 function save_list() {
+
+    /* has no objects */
     if (g_volume_lists.get(TabNavigation.get_active_tab()).count() == 0)
         return;
+
+    /* not logged in */
     if (!g_user.isLoggedIn()) {
         display_login_prompt();
         return;
     }
+
+    /* cloud service has expired or workspace is locked (pending io) */
     if ( has_service_expired() || g_locked_workspace )
         return;
+
+    /* default untitled tab */
     if (TabNavigation.get_active_tab() == g_language_data[g_lang]["WORD_UNTITLED"]) {
         save_as_list();
         return;
     }
+
+    /* lock and invoke post request */
     lock_workspace();
     g_meta_string = g_volume_lists.get(TabNavigation.get_active_tab());
     g_operation_code = g_PROCESS_SAVE_TO_DB;
