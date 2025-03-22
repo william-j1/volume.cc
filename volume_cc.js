@@ -6150,14 +6150,22 @@ function save_list() {
 
 /* save as */
 function save_as_list() {
+
+    /* no objects in dataset */
     if (g_volume_lists.get(TabNavigation.get_active_tab()).count() == 0)
         return;
-    if (!g_user.isLoggedIn()) {
+
+    /* not logged in */
+    if ( !g_user.isLoggedIn() ) {
         display_login_prompt();
         return;
     }
+
+    /* cloud service has expired or workspace is locked (pending io) */
     if ( has_service_expired() || g_locked_workspace )
         return;
+
+    /* message prompt */
     g_nsl_prompt.clear();
     g_nsl_prompt.setTitle(g_language_data[g_lang]["SET_TITLE"]);
     g_nsl_prompt.setMessage(g_language_data[g_lang]["SET_TITLE_TEXT_1"]);
