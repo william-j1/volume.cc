@@ -9272,15 +9272,15 @@ function reset_event_listeners()
 {
     /*  this removes all event listeners previously attached to prevent 
         cascading event triggers overlapping fresh event listeners */
-    let originalContents;
-    let roundingString = VolumeCCApp.rounding();
-    let resolutionString = VolumeCCApp.resolution();
+    let original_contents;
+    let rounding_string = VolumeCCApp.rounding();
+    let resolution_string = VolumeCCApp.resolution();
     if ( g_events_added ) {
-        originalContents = document.body.innerHTML;
+        original_contents = document.body.innerHTML;
         document.body.innerHTML = '';
-        document.body.innerHTML = originalContents;
-        RadioButton.SelectViaValue('rounding-option', roundingString);
-        RadioButton.SelectViaValue('resolution', resolutionString);
+        document.body.innerHTML = original_contents;
+        RadioButton.SelectViaValue('rounding-option', rounding_string);
+        RadioButton.SelectViaValue('resolution', resolution_string);
     }
 
     /*  boring albeit necessary boilerplate */
