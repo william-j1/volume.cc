@@ -2908,6 +2908,7 @@ class VolumeList {
         this.m_scales = [];
         this.m_s_undos = [];
         this.m_s_redos = [];
+        this.m_unsaved_changes = false;
     }
     add(dataType, scaleValue = 1) {
         this.m_undos.push(this.m_volumes.slice());
@@ -2927,6 +2928,7 @@ class VolumeList {
         }
         this.m_redos = [];
         this.m_initialised = true;
+        this.m_unsaved_changes = true;
     }
     count() {
         return this.m_volumes.length;
@@ -2942,6 +2944,9 @@ class VolumeList {
         }}
         return false;
     }
+    flag_as_saved() {
+        this.m_unsaved_changes = false;
+    }
     get(label) {
         for (let n = 0; n < this.m_volumes.length; n++) {
             if (this.m_volumes[n].label().toUpperCase() == label.toUpperCase())
@@ -2955,6 +2960,12 @@ class VolumeList {
                 return this.m_scales[n];
         }
         return 1;
+    }
+    has_unsaved_changes() {
+        return this.m_unsaved_changes;
+    }
+    is_unsaved() {
+        return this.m_unsaved_changes;
     }
     labelExists(label) {
         for (let n = 0; n < this.m_volumes.length; n++) {
@@ -3356,9 +3367,6 @@ let g_locked_workspace = false;
 /* regional locale for image prefixes */
 let g_image_prefix = "";
 
-/* has unsaved changes */
-let g_has_unsaved_changes = false;
-
 /* author time is used to signal whether a server 
    update may have passed thereby implying that a
    refresh by the recipient client may be necessary */
@@ -3405,6 +3413,7 @@ const g_POST_PREFERENCES = 129;
 const g_QUERY_PREFERENCES = 130;
 const g_EXPORT_VOLUME_TYPE = 131;
 const g_QUERY_SUBSCRIPTION_STATUS = 132;
+const g_CLOSE_LIST_UNSAVED = 133;
 const g_QUERY_IS_PREMIUM = 1002;
 
 /* server poll every 3 minutes */
@@ -5915,7 +5924,7 @@ function show_dialog(divIdentifier)
         window.location="https://www.volume.cc/";
         return;
     }
-    if ( (Date.now()/1000) > g_author_time && !g_has_unsaved_changes ) {
+    if ( ( Date.now() / 1000 ) > g_author_time && !g_volume_lists.get(TabNavigation.get_active_tab()).is_unsaved() ) {
         window.location="https://www.volume.cc/";
         return;
     }
@@ -6133,6 +6142,7 @@ function save_list() {
         return;
     }
     lock_workspace();
+    g_meta_string = g_volume_lists.get(TabNavigation.get_active_tab());
     g_operation_code = g_PROCESS_SAVE_TO_DB;
     let postData = "label=" + TabNavigation.get_active_tab() + "&data=" + g_volume_lists.get(TabNavigation.get_active_tab()).toString();
     WebClient.post("/p.php?!=save", handle_response, postData);
@@ -6158,11 +6168,34 @@ function save_as_list() {
 }
 
 /* close a volume list */
-function close_list(index_t) {
+function close_list(index_t, skip_unsaved_check = false) {
+
+    /* tab text descriptor */
+    const tab_text = TabNavigation.get_text(index_t);
+
+    /* query whether the closure should proceed if unsaved data exists... */
+    if ( g_volume_lists.get(tab_text).is_unsaved() && !skip_unsaved_check ) {
+        g_nsl_prompt.clear();
+        g_nsl_prompt.setTitle(g_language_data[g_lang]["TITLE_UNSAVED"]);
+        g_nsl_prompt.setMessage(g_language_data[g_lang]["MESSAGE_UNSAVED"]);
+        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_YES"]);
+        g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_CANCEL"]);
+        g_nsl_prompt.setOperation(g_CLOSE_LIST_UNSAVED);
+        g_nsl_prompt.show();
+        return;
+    }
+
+    /* delete the volumetric dataset */
     g_volume_lists.delete(TabNavigation.get_text(index_t));
+
+    /* if tab to be closed is the last active tab */
     if (TabNavigation.count_open_tabs() == 1)
         g_volume_lists.set(g_language_data[g_lang]["WORD_UNTITLED"], new VolumeList());
+
+    /* close the active tab */
     TabNavigation.close(index_t, g_language_data[g_lang]["WORD_UNTITLED"]);
+
+    /* update volumetric dataset */
     display_volume_list();
 }
 
@@ -6350,7 +6383,7 @@ function handle_response(responseData)
                 g_nsl_prompt.setTitle(g_language_data[g_lang]["VOLUMES_SAVED"]);
                 g_nsl_prompt.setMessage(g_language_data[g_lang]["THE_VOLUMES_FOR"] +' '+ TabNavigation.get_active_tab() +' '+ g_language_data[g_lang]["HAVE_BEEN_SAVED"]);
                 g_nsl_prompt.addButton(g_language_data[g_lang]["WORD_OKAY"], true);
-                g_has_unsaved_changes = false;
+                g_volume_lists.get(g_meta_string).flag_as_saved();
             }
             else if (responseData == "NONE_SUBSCRIBER_LIMIT_REACHED") {
                 g_nsl_prompt.setTitle(g_language_data[g_lang]["USAGE_LIMIT_REACHED"]);
@@ -7496,7 +7529,6 @@ function add_two_variable_object(volumeType, label, p, q, p_res, q_res)
                 break;
         }
         g_volume_lists.get(TabNavigation.get_active_tab()).add(object_t);
-        g_has_unsaved_changes = true;
     }
     quantity_notify_check(quantity, delta_q);
     update_display();
@@ -7561,7 +7593,6 @@ function add_three_variable_object(volumeType, label, p, q, r, p_res, q_res, r_r
                 break;
         }
         g_volume_lists.get(TabNavigation.get_active_tab()).add(object_t);
-        g_has_unsaved_changes = true;
     }
     quantity_notify_check(quantity, delta_q);
     update_display();
@@ -7618,7 +7649,6 @@ function add_five_variable_object(volumeType, label, p, q, r, s, t, p_res, q_res
                 break;
         }
         g_volume_lists.get(TabNavigation.get_active_tab()).add(object_t);
-        g_has_unsaved_changes = true;
     }
     quantity_notify_check(quantity, delta_q);
     update_display();
@@ -7665,7 +7695,6 @@ function add_four_variable_object(volumeType, label, p, q, r, s, p_res, q_res, r
                 break;
         }
         g_volume_lists.get(TabNavigation.get_active_tab()).add(object_t);
-        g_has_unsaved_changes = true;
     }
     quantity_notify_check(quantity, delta_q);
     update_display();
@@ -8063,7 +8092,7 @@ function nsl_prompt_button(index)
     }
 
     /* time has passed where an update maybe necessary thru the access point */
-    if ( (Date.now()/1000) > g_author_time && !g_has_unsaved_changes ) {
+    if ( (Date.now()/1000) > g_author_time && !g_volume_lists.get(TabNavigation.get_active_tab()).is_unsaved() ) {
         window.location="https:/www.volume.cc/";
         return;
     }
@@ -8719,6 +8748,14 @@ function nsl_prompt_button(index)
                 let postData = "label=" + TabNavigation.get_active_tab() + "&data=" + g_volume_lists.get(TabNavigation.get_active_tab()).toString() +"&is_private="+ is_private.toString() +"&message="+ message.toString();
                 WebClient.post("/p.php?!=export_volume", handle_response, postData);
             }
+            break;
+        /*
+         PROCEED WITH CLOSURE?
+         */
+        case g_CLOSE_LIST_UNSAVED:
+            if ( buttonText != g_language_data[g_lang]["WORD_YES"] )
+                return;
+            close_list(TabNavigation.get_active_index(), true);
             break;
     }
 }
