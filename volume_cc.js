@@ -8825,7 +8825,7 @@ function init()
         /* shift key is pressed and prompt window is not visible */
         if (e.shiftKey && !g_nsl_prompt.is_visible()) {
             switch(e.which) {
-                /* SHIFT+S */ case 83: show_dialog('add_surplus'); break;
+                /* SHIFT+S */case 83: show_dialog('add_surplus'); break;
                 /* SHIFT+A */case 65: show_dialog('add_capsule'); break;
                 /* SHIFT+B */case 66: show_dialog('add_cone'); break;
                 /* SHIFT+C */case 67: show_dialog('add_cylinder'); break;
