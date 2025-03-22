@@ -8920,9 +8920,6 @@ function init()
                 /* SHIFT+U */case 85: show_dialog('add_torus'); break;
     }}}
 
-    /* record initialisation time */
-    g_initTime = new Date().getTime()/1000;
-
     /* populate vector with empty dataset */
     g_volume_lists.set("Untitled", new VolumeList());
 
