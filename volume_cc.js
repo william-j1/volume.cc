@@ -3425,8 +3425,7 @@ let g_LOGIN_REQUIRED_FOR_EXPORT = false;
 /* most guests will only need one */
 let g_MAX_GUEST_VOLUMES = 100;
 
-/* the hardcore will want to measure the sewers for volumetric 
-flow rates and/or document difficult spacial complexities */
+/* large spacial volumetric flow rates */
 let g_MAX_NON_SUB_VOLUMES = 1000;
 
 /* delimiters for geometric shapes */
