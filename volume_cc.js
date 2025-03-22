@@ -6186,7 +6186,7 @@ function close_list(index_t, skip_unsaved_check = false) {
     }
 
     /* delete the volumetric dataset */
-    g_volume_lists.delete(TabNavigation.get_text(index_t));
+    g_volume_lists.delete(tab_text);
 
     /* if tab to be closed is the last active tab */
     if (TabNavigation.count_open_tabs() == 1)
