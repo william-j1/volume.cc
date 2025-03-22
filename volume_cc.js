@@ -6159,8 +6159,6 @@ function save_as_list() {
 
 /* close a volume list */
 function close_list(index_t) {
-    if ( has_service_expired() )
-        return;
     g_volume_lists.delete(TabNavigation.get_text(index_t));
     if (TabNavigation.count_open_tabs() == 1)
         g_volume_lists.set(g_language_data[g_lang]["WORD_UNTITLED"], new VolumeList());
