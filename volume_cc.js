@@ -8771,8 +8771,9 @@ function query_service_status() {
 /* initialisation function */
 function init()
 {   
-    document.onkeydown = function(event) {
-        var e = event || window.event;
+    document.onkeydown = function(event)
+    {
+        const e = event || window.event;
 
         /* if alt key is pressed */
         if (e.altKey)
