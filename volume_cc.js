@@ -3359,6 +3359,11 @@ let g_image_prefix = "";
 /* has unsaved changes */
 let g_has_unsaved_changes = false;
 
+/* author time is used to signal whether a server 
+   update may have passed thereby implying that a
+   refresh by the recipient client may be necessary */
+const g_author_time = Math.floor(Date.now()/1000)+86400;
+
 /* delimitor constants */
 const g_DELIMITOR_PRIORITY_5 = '~';
 const g_DELIMITOR_PRIORITY_4 = '[]';
@@ -9689,8 +9694,3 @@ window.addEventListener("scroll", (event) => {
 window.addEventListener("resize", (event) => {
     set_window_position();
 }, true);
-
-/* author time is used to signal whether a server 
-   update may have passed thereby implying that a
-   refresh by the recipient client may be necessary */
-const g_author_time = Math.floor(Date.now()/1000)+86400;
