@@ -2940,6 +2940,7 @@ class VolumeList {
                 this.m_s_undos.push(this.m_scales.slice());
                 this.m_volumes.splice(n, 1);
                 this.m_scales.splice(n, 1);
+                this.m_unsaved_changes = true;
                 return true;
         }}
         return false;
@@ -2997,6 +2998,7 @@ class VolumeList {
                 this.m_s_undos.push(this.m_scales.slice());
                 this.m_volumes[n] = volumeObject;
                 this.m_scales[n] = scaleValue == 'undefined' ? this.m_scales[n] : scaleValue;
+                this.m_unsaved_changes = true;
                 return true;
         }}
         return false;
@@ -3009,6 +3011,7 @@ class VolumeList {
         this.m_scales = [];
         this.m_s_undos = [];
         this.m_s_redos = [];
+        this.m_unsaved_changes = false;
     }
     redo() {
         if (this.m_redos.length == 0)
@@ -3017,6 +3020,7 @@ class VolumeList {
         this.m_s_undos.push(this.m_scales.slice());
         this.m_volumes = this.m_redos.pop().slice();
         this.m_scales = this.m_s_redos.pop().slice();
+        this.m_unsaved_changes = true;
     }
     setScale(label, scaleValue) {
         for (let n = 0; n < this.m_volumes.length; n++) {
@@ -3024,6 +3028,7 @@ class VolumeList {
                 this.m_undos.push(this.m_volumes.slice());
                 this.m_s_undos.push(this.m_scales.slice());
                 this.m_scales[n] = scaleValue;
+                this.m_unsaved_changes = true;
                 return true;
         }}
         return false;
@@ -3294,6 +3299,7 @@ class VolumeList {
         this.m_s_redos.push(this.m_scales.slice());
         this.m_volumes = this.m_undos.pop().slice();
         this.m_scales = this.m_s_undos.pop().slice();
+        this.m_unsaved_changes = true;
     }
     volume(truncate_to_zero = true) {
         let volume_mm3 = BigNumber(0);
