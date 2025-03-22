@@ -6615,6 +6615,7 @@ function handle_response(responseData)
 
         /* change password */
         case g_CHANGE_PASSWD:
+
             g_nsl_prompt.clear();
             if (responseData != 'FALSE') {
                 g_nsl_prompt.setTitle(g_language_data[g_lang]["PASSWORD_CHANGED"]);
@@ -6631,8 +6632,10 @@ function handle_response(responseData)
 
         /* check subscription status */
         case g_CHECK_SUBSCRIPTION:
+
             g_nsl_prompt.clear();
-            if (responseData.indexOf(':') != -1) {
+            if ( responseData.indexOf(':') != -1 )
+            {
                 let string_t = responseData.split(':');
                 let status_t = '';
                 if ( string_t[1] == '1' )
@@ -6724,7 +6727,7 @@ function handle_response(responseData)
             }
             break;
 
-        /*  */
+        /* network export */
         case g_EXPORT_VOLUME:
             g_nsl_prompt.clear();
             if (responseData != 'ERROR')
