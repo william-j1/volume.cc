@@ -9288,8 +9288,8 @@ function preload_images() {
     }
 }
 
-/* handle the input change for the ranged inputs */
-function handleInputChange(e) {
+/* handle the change event for the ranged inputs */
+function handle_input_change(e) {
     let target = e.target;
     if (e.target.type !== 'range')
         target = document.getElementById('range');
@@ -9299,10 +9299,10 @@ function handleInputChange(e) {
     target.style.backgroundSize = (val-min)*100/(max-min)+ '% 100%';
 }
 
-/* adds an event listener for each range inputs */
-let g_rangeInputs = document.querySelectorAll('input[type="range"]');
-g_rangeInputs.forEach(input => {
-    input.addEventListener('input', handleInputChange);
+/* adds an event listener for each range input */
+let g_range_inputs = document.querySelectorAll('input[type="range"]');
+g_range_inputs.forEach(input => {
+    input.addEventListener('input', handle_input_change);
 })
 
 /* signal a save preference */
