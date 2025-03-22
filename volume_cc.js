@@ -9350,6 +9350,7 @@ function reset_event_listeners()
     let lp = document.getElementById('language_picker');
     let torus = document.getElementById('torus_item');
 
+    /* set client-side language preference */
     document.getElementById('language_picker').value = g_lang;
     document.getElementById('language_flag').src = '/assets/lang/'+ g_lang +'.svg';
 
